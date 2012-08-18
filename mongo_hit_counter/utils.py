@@ -24,9 +24,6 @@ def insert_hit(content_type, id, ip):
         'ip': ip
     })
 
-    print h.count()
-    print
-
     if h.count() == 0:
         single_hits.update({
             'contentType': content_type,
