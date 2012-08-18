@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 from taggit.managers import TaggableManager
 
@@ -24,3 +25,6 @@ class Quote(models.Model):
     metadata = models.TextField(blank=True, null=True)
 
     tags = TaggableManager()
+
+    def get_absolute_url(self):
+        return reverse('quote-detail', kwargs={'pk': self.pk})
