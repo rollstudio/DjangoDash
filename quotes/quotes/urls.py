@@ -1,10 +1,9 @@
 from django.conf.urls import patterns, url
-from django.views.decorators.csrf import csrf_exempt
 
-from .views import QuoteCreate
+from .views import QuoteCreate, QuoteDetail
 
 
 urlpatterns = patterns('',
-    url(r'^add/$', csrf_exempt(QuoteCreate.as_view())),
-    #url(r'^view/(?P<pk>\d+)/$', QuoteCreate.as_view()),
+    url(r'^add/$', QuoteCreate.as_view()),
+    url(r'^view/(?P<pk>\d+)/$', QuoteDetail.as_view(), name='quote-detail'),
 )

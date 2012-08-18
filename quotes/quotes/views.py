@@ -1,11 +1,16 @@
 from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
 
 from .models import Quote
 from .forms import QuoteForm
 
 
+class QuoteDetail(DetailView):
+    model = Quote
+
+
 class QuoteCreate(CreateView):
-    #form_class = QuoteForm
+    form_class = QuoteForm
     model = Quote
 
     def form_valid(self, form):
