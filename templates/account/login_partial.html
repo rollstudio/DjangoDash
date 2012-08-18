@@ -1,0 +1,49 @@
+<ul id="wrapper">
+ <li id="login">
+  <div class="container">
+    <h3>LOGIN</h3>
+    <div class="content">
+      PLEASE SIGN IN WITH ONE OF YOUR EXISTING THIRD PART ACCOUNTS. OR, SIGN UP FOR A LOCALHOST ACCOUNT AND SIGN IN BELOW:
+      <ul class="signin_list">
+        <li><a href="{% url facebook_login %}" title="Sign in with Facebook">Facebook</a></li>
+        <li><a href="{% url twitter_login %}" title="Sign in with Twitter">Twitter</a></li>
+        <li><a href="{% url google_login %}" title="Sign in with Google +">Google +</a></li>
+      </ul>
+
+      <ul class="signup_list">
+        <li><a href="#" class="login" title="Sign in">Sign in</a></li>
+        <li><a href="#" class="register" title="Register">Register</a></li>
+      </ul>
+
+      <form id="form_signin" method="POST" action="{% url account_login %}">
+        {% csrf_token %}
+        <legend>SIGN IN</legend>
+        <fieldset>
+          <p class="clearfix"><label for="login_signin">LOGIN</label><input type="text" id="login_signin" name="login" class="input_signin"></p>
+          <p class="clearfix"><label for="password_signin">Password</label><input type="password" id="password_signin" name="password" class="input_signin"></p>
+          <p class="clearfix"><label for="remember_signin">Remember me</label><input type="checkbox" id="remember_signin" name="remember" class="checkbox_signin"></p>
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <p class="clearfix"><input type="submit" id="submit_signin" value="send" class="submit_form"></p>
+          <p class="clearfix forgot_signin"><label><a href="{% url account_reset_password %}">FORGOT PASSWORD?</a></label></p>
+          <!-- TODO display errors -->
+          {{ form.as_p }}
+        </fieldset>
+      </form>
+
+      <form id="form_register" method="" action="">
+        <legend>Register</legend>
+        <fieldset>
+          <p class="clearfix"><label for="login_register">USERNAME</label><input type="text" id="login_register" name="username" class="input_signin"></p>
+          <p class="clearfix"><label for="password_register">Password</label><input type="password" id="password_register" name="password1" class="input_signin"></p>
+          <p class="clearfix"><label for="password_register_2">Password (again)</label><input type="password" id="password_register_2" name="password2" class="input_signin"></p>
+          <p class="clearfix"><label for="email">Email</label><input type="text" id="email_register" name="email" class="input_signin"></p>
+          <p class="clearfix"><input type="submit" id="submit_signin" value="sign up" class="submit_form"></p>
+        </fieldset>
+      </form>
+      <!-- {{ signup_form.as_p }} -->
+    </div>
+  </div>
+</li>
+</ul>
