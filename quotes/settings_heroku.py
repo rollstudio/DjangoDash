@@ -12,6 +12,9 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'citationneeded')
 AWS_QUERYSTRING_AUTH = False
 
+DEFAULT_FROM_EMAIL = 'patrick.arminio@gmail.com'
+EMAIL_BACKEND = 'django_ses.SESBackend'
+
 DATABASES = postgresify()
 
 STATIC_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
