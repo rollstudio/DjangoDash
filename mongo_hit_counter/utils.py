@@ -1,6 +1,8 @@
+from django.conf import settings
+
 from pymongo import Connection
 
-connection = Connection()  # TODO: Get string from settings
+connection = Connection(settings.get('MONGODB_STRING', ''))
 
 db = connection.hit_counter
 
