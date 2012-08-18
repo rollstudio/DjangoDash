@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load facebook_tags %}
+{% load twitter_tags %}
 {% block head %}
     {% opengraph_tag title='Quote by ...' type="citationneeded:quote" url=request.get_full_path %}
 {% endblock head %}
@@ -8,4 +9,6 @@
 
 {% block content %}
     {{ object.body }}
+
+    {% tweet_link "tweet this" text="Yeah! Tweet me ♥" %}
 {% endblock content %}
