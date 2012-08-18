@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'storages',
     'compressor',
     'quotes.quotes',
+    'socialshare',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -149,3 +150,8 @@ LOGGING = {
 
 
 COMPRESSION_ENABLED = False
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
