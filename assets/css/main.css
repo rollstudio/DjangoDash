@@ -166,7 +166,8 @@ input, textarea {background:none; border:1px solid #000;width:50%;font-family:He
 #form_your_id legend{font-size: 30px;margin-top: 12px;line-height: 40px;margin-bottom: 20px;}
 #form_your_id fieldset{border:none;}
 #form_your_id label{display:block; float:left; text-align:right; width:40%;font-weight:bold; margin-right:10px;}
-#form_your_id .errorlist{position:absolute;left:0; top:11px;font-size:10px; color:#666;text-align:right; width:40%;font-weight:bold; margin-right:10px;}
+#form_your_id .errorlist{font-size:10px; color:#666;text-align:left; width:100%;font-weight:bold; margin-right:10px;}
+#form_your_id .errorlist li{width:100%!important;}
 #form_your_id .helptext{font-weight:bold;}
 #form_your_id .submit_form{margin-right:41px;}
 
