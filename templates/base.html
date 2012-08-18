@@ -1,6 +1,7 @@
 {% spaceless %}
 {% load compress %}
 {% load chunks %}
+{% load quotes_utils %}
 {% endspaceless %}<!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -45,7 +46,10 @@
             </ul>
           </nav>
           <div class="main_dixit">
-            {% include "quotes/quote.html" %}
+            {% get_latest_quote as latest %}
+            {% with latest as quote %}
+              {% include "quotes/quote.html" %}
+            {% endwith %}
           </div>
         </div>
       </div>
