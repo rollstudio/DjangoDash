@@ -1,6 +1,7 @@
 from os.path import dirname, join, realpath
 
 import django
+from django.conf import global_settings as DEFAULT_SETTINGS
 
 DJANGO_ROOT = dirname(realpath(django.__file__))
 SITE_ROOT = dirname(dirname(realpath(__file__)))
@@ -76,6 +77,11 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
+)
+
+
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.core.context_processors.request',
 )
 
 MIDDLEWARE_CLASSES = (
