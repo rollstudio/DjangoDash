@@ -1,10 +1,13 @@
 {% extends "base.html" %}
+{% load facebook_tags %}
+
+{% block head %}
+{% opengraph_tag title='[Citation Needed] Coming Soon' type="website" %}
+
+{% endblock %}
 
 {% block title %}{{ block.super }} - Coming soon{% endblock title %}
-
 {% block body %}
-
 <h1>Coming Soon</h1>
 
 {% endblock body %}
-

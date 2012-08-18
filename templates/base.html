@@ -18,6 +18,8 @@
     {% endcompress %}
 
     <script src="{{ STATIC_URL }}js/libs/modernizr.2.6.1.js"></script>
+
+    {% block head %}{% endblock head %}
 </head>
 <body id="{% block body-id %}{% endblock %}" class="{% block body-class %}{% endblock %}">
     <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this app.</p><![endif]-->
