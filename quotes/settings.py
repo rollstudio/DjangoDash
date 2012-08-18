@@ -6,7 +6,7 @@ import django.conf.global_settings as DEFAULT_SETTINGS
 from postgresify import postgresify
 
 DJANGO_ROOT = dirname(realpath(django.__file__))
-SITE_ROOT = dirname(realpath(__file__))
+SITE_ROOT = dirname(dirname(realpath(__file__)))
 
 path = lambda *args: join(SITE_ROOT, *args)
 

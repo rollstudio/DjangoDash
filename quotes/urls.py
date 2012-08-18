@@ -1,12 +1,21 @@
+from django.contrib import admin
 from django.conf.urls import patterns, include, url
+from django.views.generic import TemplateView, RedirectView
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
+
+
+class ComingSoonView(TemplateView):
+    template_name = 'comingsoon.html'
+
+
+class HomeView(RedirectView):
+    url = '/coming'
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'quotes.views.home', name='home'),
+    url(r'^coming$', ComingSoonView.as_view()),
+    url(r'^$', HomeView.as_view()),
     # url(r'^quotes/', include('quotes.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
