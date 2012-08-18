@@ -57,4 +57,4 @@ def quote_post_save(sender, instance, created, *args, **kwargs):
     except models.ObjectDoesNotExist:
         pass
 
-post_save.connect(quote_post_save, sender=Quote)
+#post_save.connect(quote_post_save, sender=Quote)
