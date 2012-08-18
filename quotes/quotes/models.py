@@ -25,10 +25,12 @@ class Quote(models.Model):
     user = models.ForeignKey(User, related_name='quotes', blank=True, null=True)
     author = models.ForeignKey(Author, related_name='quotes', blank=True, null=True)
 
-    language = models.CharField(max_length=2, choices=settings.LANGUAGES)
+    language = models.CharField(max_length=5, choices=settings.LANGUAGES)
 
     source = models.CharField(max_length=200, blank=True, null=True)
     metadata = models.TextField(blank=True, null=True)
+
+    published_on = models.DateTimeField(auto_now_add=True)
 
     tags = TaggableManager()
 
