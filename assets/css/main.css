@@ -169,7 +169,7 @@ input, textarea {background:none; border:1px solid #000;width:50%;font-family:He
 #form_your_id .errorlist{font-size:10px; color:#666;text-align:left; width:100%;font-weight:bold; margin-right:10px;}
 #form_your_id .errorlist li{width:100%!important;}
 #form_your_id .helptext{font-weight:bold;}
-#form_your_id .submit_form{margin-right:41px;}
+#form_your_id .submit_form{margin-right:19px;}
 
 #right_column .prev_next a.prev{ background:url(../img/prev_next_right.png) no-repeat 44px 3px}
 #right_column .prev_next a.prev.disabled, #right_column .prev_next a.prev:hover{ background:url(../img/prev_next_right.png) no-repeat -16px 3px;}
