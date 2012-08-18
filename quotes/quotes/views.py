@@ -3,7 +3,7 @@ from django.views.generic.detail import DetailView
 
 from braces.views import LoginRequiredMixin
 
-from .models import Quote
+from .models import Quote, Author
 from .forms import QuoteForm
 
 
@@ -17,5 +17,8 @@ class QuoteCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        form.instance.author = Author.objects.get_or_create(name=form.instance.author)
+
+        print 'lol'
 
         return super(QuoteCreate, self).form_valid(form)

@@ -8,4 +8,4 @@ class QuoteForm(forms.ModelForm):
 
     class Meta:
         model = Quote
-        exclude = ('user', 'metadata')
+        exclude = ('user', 'metadata', 'author')
