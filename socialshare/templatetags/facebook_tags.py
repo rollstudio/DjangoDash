@@ -12,7 +12,7 @@ def opengraph_tag(*args, **kwargs):
     {% opengraph_tag title="My Great Page" [type="website"] %}
     """
 
-    template = '<meta property="og:%(property)s" content="%(val)s" />'
+    t = '<meta property="og:%(property)s" content="%(val)s" />'
     out = []
     for k, v in kwargs.items():
         if k == 'url' and not v.startswith('http'):
@@ -22,7 +22,7 @@ def opengraph_tag(*args, **kwargs):
             except Site.DoesNotExist:
                 raise template.TemplateSyntaxError('No site set.')
 
-        out.append(template % {
+        out.append(t % {
             'property': k,
             'val': v
         })

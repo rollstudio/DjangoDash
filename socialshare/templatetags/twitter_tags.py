@@ -14,7 +14,7 @@ def tweet_link(url_text, *args, **kwargs):
     {% tweet_link "text for the anchor" url="/" [text="Check my site"] %}
     """
 
-    template = '<a href="https://twitter.com/intent/tweet?%(link)s">%(text)s</a>'
+    t = '<a class="twitter share-link" href="https://twitter.com/intent/tweet?%(link)s">%(text)s</a>'
     out = []
 
     for k, v in kwargs.items():
@@ -27,7 +27,7 @@ def tweet_link(url_text, *args, **kwargs):
 
         out.append(k + '=' + quote(v.encode('utf-8')))
 
-    return template % {
+    return t % {
         'link': '&'.join(out),
         'text': url_text
     }
