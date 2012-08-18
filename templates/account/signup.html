@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ block.super }} - Register{% endblock title %}
+
+{% block body-id %}signup-page{% endblock body-id %}
+
+{% block content_middle %}
+    {% include "account/register_partial.html" %}
+{% endblock content_middle %}

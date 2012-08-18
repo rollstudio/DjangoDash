@@ -2,6 +2,8 @@
 
 {% block title %}{{ block.super }} - Login or Register{% endblock title %}
 
+{% block body-id %}login-page{% endblock body-id %}
+
 {% block content_middle %}
     {% include "account/login_partial.html" %}
 {% endblock content_middle %}

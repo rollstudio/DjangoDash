@@ -1,0 +1,8 @@
+<form id="form_register" method="post" action="{% url account_signup %}">
+  {% csrf_token %}
+  <legend>Register</legend>
+  <fieldset>
+    {{ form.as_p }}
+    <p class="clearfix"><input type="submit" id="submit_signin" value="sign up" class="submit_form"></p>
+  </fieldset>
+</form>

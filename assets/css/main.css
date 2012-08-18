@@ -196,7 +196,7 @@ input, textarea {background:none; border:1px solid #000;width:50%;font-family:He
 #right_column .share li a.share_gp{background:#999 url(../img/social.png) no-repeat right top;}
 #right_column .share li a.share_gp:hover{background:#CCC url(../img/social.png) no-repeat right top;}
 
-#login .content > form { display: none; }
+#home #login .content > form { display: none; }
 
 
 /* =============================================================================
