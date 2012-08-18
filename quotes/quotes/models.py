@@ -11,11 +11,6 @@ import facebook
 
 from allauth.socialaccount.models import SocialAccount, SocialApp
 
-try:
-    app = SocialApp.objects.get(name='Facebook')
-except SocialApp.DoesNotExist:
-    app = None
-
 
 class Author(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -46,6 +41,14 @@ class Quote(models.Model):
 
 def quote_post_save(sender, instance, created, *args, **kwargs):
     if not created:
+        return
+
+    try:
+        app = SocialApp.objects.get(name='Facebook')
+    except SocialApp.DoesNotExist:
+        app = None
+
+    if app == None:
         return
 
     try:
