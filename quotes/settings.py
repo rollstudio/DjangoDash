@@ -180,6 +180,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 COMPRESSION_ENABLED = False
+EMAIL_CONFIRMATION_DAYS = 2
 
 try:
     from local_settings import *
