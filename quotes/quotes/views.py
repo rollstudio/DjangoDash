@@ -17,4 +17,5 @@ class QuoteCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+
         return super(QuoteCreate, self).form_valid(form)

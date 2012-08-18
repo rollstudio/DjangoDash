@@ -2,8 +2,19 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.db.models.signals import post_save
+from django.contrib.sites.models import Site
 
 from taggit.managers import TaggableManager
+
+import facebook
+
+from allauth.socialaccount.models import SocialAccount, SocialApp
+
+try:
+    app = SocialApp.objects.get(name='Facebook')
+except SocialApp.DoesNotExist:
+    app = None
 
 
 class Author(models.Model):
@@ -28,3 +39,22 @@ class Quote(models.Model):
 
     def get_absolute_url(self):
         return reverse('quote-detail', kwargs={'pk': self.pk})
+
+    def get_full_url(self):
+        return ''.join(['http://', Site.objects.get_current().domain, self.get_absolute_url()])
+
+
+def quote_post_save(sender, instance, created, *args, **kwargs):
+    if not created:
+        return
+
+    try:
+        token = SocialAccount.objects.get(user=instance.user).socialtoken_set.get(app=app).token
+
+        graph = facebook.GraphAPI(token)
+        graph.put_object("me", "citationneeded:share", quote=instance.get_full_url())
+
+    except models.ObjectDoesNotExist:
+        pass
+
+post_save.connect(quote_post_save, sender=Quote)

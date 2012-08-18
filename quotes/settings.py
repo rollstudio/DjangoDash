@@ -172,6 +172,12 @@ LOGGING = {
     }
 }
 
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email', 'publish_stream', 'publish_actions'],
+        'METHOD': 'oauth2',
+    }
+}
 
 COMPRESSION_ENABLED = False
 
