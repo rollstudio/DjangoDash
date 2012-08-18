@@ -1,3 +1,5 @@
+import os
+
 from settings import *
 
 from postgresify import postgresify
