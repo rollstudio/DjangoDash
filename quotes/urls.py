@@ -1,25 +1,29 @@
 from django.contrib import admin
 from django.conf.urls import patterns, include, url
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
+
+from braces.views import LoginRequiredMixin
 
 from allauth.account.forms import LoginForm, SignupForm
 
 admin.autodiscover()
 
-
-class HomeView(TemplateView):
+"""
+class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'base.html'
+
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['login_form'] = LoginForm()
         context['signup_form'] = SignupForm()
         return context
+"""
 
 urlpatterns = patterns('',
     # Examples:
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^$', HomeView.as_view()),
+    url(r'^$', RedirectView.as_view(url="/quotes/add")),
     url(r'^quotes/', include('quotes.quotes.urls')),
     #url(r'^show/(?P<object_id>\d+)$',
     #    'django.views.generic.list_detail.object_detail',

@@ -54,6 +54,7 @@
         </div>
       </div>
       <div id="middle_column">
+        {% block content_middle %}
         <ul id="wrapper">
             <li id="about" style="display:none">
             <div class="container">
@@ -71,48 +72,7 @@
             Hello!
             {% else %}
             <li id="login">
-      	<div class="container">
-      		<h3>LOGIN</h3>
-          <div class="content">
-          	PLEASE SIGN IN WITH ONE OF YOUR EXISTING THIRD PART ACCOUNTS. OR, SIGN UP FOR A LOCALHOST ACCOUNT AND SIGN IN BELOW:
-            <ul class="signin_list">
-              <li><a href="{% url facebook_login %}" title="Sign in with Facebook">Facebook</a></li>
-              <li><a href="{% url twitter_login %}" title="Sign in with Twitter">Twitter</a></li>
-              <li><a href="{% url google_login %}" title="Sign in with Google +">Google +</a></li>
-            </ul>
-            
-            <ul class="signup_list">
-              <li><a href="{% url account_login %}" title="Sign in">Sign in</a></li>
-              <li><a href="{% url account_signup %}" title="Register">Register</a></li>
-            </ul>
-            
-            <form id="form_signin" method="POST" action="{% url account_login %}">
-              {% csrf_token %}
-            	<legend>SIGN IN</legend>
-            	<fieldset>
-              	<p class="clearfix"><label for="login_signin">LOGIN</label><input type="text" id="login_signin" name="username" class="input_signin"></p>
-              	<p class="clearfix"><label for="password_signin">Password</label><input type="password" id="password_signin" name="password" class="input_signin"></p>
-              	<p class="clearfix"><label for="remember_signin">Remember me</label><input type="checkbox" id="remember_signin" class="checkbox_signin"></p>
-              	<p class="clearfix"><input type="submit" id="submit_signin" value="send" class="submit_form"></p>
-                <p class="clearfix forgot_signin"><label><a href="{% url account_reset_password %}">FORGOT PASSWORD?</a></label></p>
-                <!-- {{ login_form.as_p }} -->
-              </fieldset>
-            </form>
-            
-            <form id="form_register" method="" action="">
-            	<legend>Register</legend>
-            	<fieldset>
-              	<p class="clearfix"><label for="login_register">USERNAME</label><input type="text" id="login_register" name="username" class="input_signin"></p>
-              	<p class="clearfix"><label for="password_register">Password</label><input type="password" id="password_register" name="password1" class="input_signin"></p>
-              	<p class="clearfix"><label for="password_register_2">Password (again)</label><input type="password" id="password_register_2" name="password2" class="input_signin"></p>
-              	<p class="clearfix"><label for="email">Email</label><input type="text" id="email_register" name="email" class="input_signin"></p>
-              	<p class="clearfix"><input type="submit" id="submit_signin" value="sign up" class="submit_form"></p>
-              </fieldset>
-            </form>
-            <!-- {{ signup_form.as_p }} -->
-          </div>
-        </div>
-        </li>
+      	        </li>
         {% endif %}
 
         </ul>
@@ -120,6 +80,7 @@
           <a href="#" title="prev" class="prev disabled">prev</a>
           <a href="#" title="next" class="next">next</a>
         </div>
+        {% endblock content_middle %}
       </div>
       <div id="right_column">
         <ul id="wrapper" style="height:100%">   <!--(@partick: calcola altezza come numero item più due zeri)-->
