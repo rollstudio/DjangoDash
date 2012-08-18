@@ -16,7 +16,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'citationneeded')
 AWS_QUERYSTRING_AUTH = False
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -69,7 +69,7 @@ STATICFILES_FINDERS = DEFAULT_SETTINGS.STATICFILES_FINDERS + (
     'compressor.finders.CompressorFinder',
 )
 
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = DEBUG is False
 
 if COMPRESS_ENABLED:
     COMPRESS_CSS_FILTERS = [
@@ -175,3 +175,14 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+COMPRESS_ENABLED = DEBUG is False
+
+if COMPRESS_ENABLED:
+    COMPRESS_CSS_FILTERS = [
+        'compressor.filters.css_default.CssAbsoluteFilter',
+        'compressor.filters.cssmin.CSSMinFilter',
+    ]
+    COMPRESS_STORAGE = 'quotes.utils.CachedS3BotoStorage'
+    COMPRESS_URL = STATIC_URL
+    COMPRESS_OFFLINE = True
