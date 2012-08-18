@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ block.super }} - Login or Register{% endblock title %}
+
 {% block content_middle %}
         <ul id="wrapper">
          <li id="login">
@@ -30,6 +32,7 @@
                 {% endif %}
               	<p class="clearfix"><input type="submit" id="submit_signin" value="send" class="submit_form"></p>
                 <p class="clearfix forgot_signin"><label><a href="{% url account_reset_password %}">FORGOT PASSWORD?</a></label></p>
+                <!-- TODO display errors -->
                 <!-- {{ form.as_p }} -->
               </fieldset>
             </form>
