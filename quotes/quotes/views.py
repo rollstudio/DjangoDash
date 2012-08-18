@@ -1,6 +1,8 @@
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 
+from braces.views import LoginRequiredMixin
+
 from .models import Quote
 from .forms import QuoteForm
 
@@ -9,7 +11,7 @@ class QuoteDetail(DetailView):
     model = Quote
 
 
-class QuoteCreate(CreateView):
+class QuoteCreate(LoginRequiredMixin, CreateView):
     form_class = QuoteForm
     model = Quote
 
