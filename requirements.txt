@@ -5,7 +5,7 @@ dj-database-url==0.1.2
 django-allauth==0.7.0
 django-appconf==0.5
 django-braces==0.1.3
-django-chunks==0.3
+-e git+https://github.com/clintecker/django-chunks.git@d22a51071e99d3d9f2a90c0361b658bbb211fe36#egg=django_chunks-dev
 django-compressor==1.2
 -e git+https://github.com/madron/django-email-confirmation@afb53b054d269fbdbadd1601bd32c6cd2da87afb#egg=django_email_confirmation-dev
 django-heroku-postgresify==0.2
