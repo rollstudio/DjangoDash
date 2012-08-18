@@ -48,15 +48,12 @@ def quote_post_save(sender, instance, created, *args, **kwargs):
     if not created:
         return
 
-    try:
-        token = SocialAccount.objects.get(user=instance.user, provider='Facebook').socialtoken_set.get(app=app).token
+    token = SocialAccount.objects.get(user=instance.user, provider='Facebook').socialtoken_set.get(app=app).token
 
-        requests.post('https://graph.facebook.com/me/citationneeded:share', data={
-            'quote': instance.get_full_url(),
-            'access_token': token
-        })
+    requests.post('https://graph.facebook.com/me/citationneeded:share', data={
+        'quote': instance.get_full_url(),
+        'access_token': token
+    })
 
-    except models.ObjectDoesNotExist:
-        pass
 
 post_save.connect(quote_post_save, sender=Quote)
