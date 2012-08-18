@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load compress %}<!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
@@ -9,7 +9,11 @@
     <title>[Citation Needed] Coming soon</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
+    {% compress css %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
+    {% endcompress %}
+
     <script src="{{ STATIC_URL }}js/libs/modernizr.2.6.1.js"></script>
 </head>
 <body>
