@@ -1,0 +1,17 @@
+<h3>ID {{quote.pk}}</h3>
+<div class="dixit_text">
+  {{ quote.body }}
+</div>
+<div class="dixit_details">
+    <p><strong>BY:</strong> {{ quote.author|default:"Anonymous" }}</p>
+    {% if quote.source %}<p><strong>SOURCE:</strong> <a href="{{ quote.source }}">{{ quote.source }}</a></p>{% endif %}
+    <p><strong>TAG:</strong> CATALOG, CATALOGUE, HELVETICA, INTERNATIONAL TYPOGRAPHIC STYLE, INVITATION, MINIMALISM, MODERNISM, POSTER, PRINT</p>
+</div>
+<div class="share">
+    <a href="#" title="share">Share</a>
+    <ul id="share_buttons">
+        <li><a href="#" class="share_fb">Facebook</a></li>
+        <li><a href="#" class="share_tw">Twitter</a></li>
+        <li><a href="#" class="share_gp">GooglePlus</a></li>
+    </ul>
+</div>
