@@ -65,11 +65,11 @@ STATICFILES_DIRS = (
 
 # List of finder classes that know how to find static files in
 # various locations.
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+STATICFILES_FINDERS = DEFAULT_SETTINGS.STATICFILES_FINDERS + (
+    'compressor.finders.CompressorFinder',
 )
+
+COMPRESS_ENABLED = True
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '_6nl4zm1v9t#@&amp;yv*#6h11cqor5*nvm5=9rz&amp;@j#sekpt+af7r'
@@ -116,6 +116,7 @@ INSTALLED_APPS = (
 
     'south',
     'storages',
+    'compressor',
 )
 
 # A sample logging configuration. The only tangible logging
