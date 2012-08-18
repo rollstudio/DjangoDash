@@ -1,20 +1,11 @@
-import os
 from os.path import dirname, join, realpath
 
 import django
-import django.conf.global_settings as DEFAULT_SETTINGS
-
-from postgresify import postgresify
 
 DJANGO_ROOT = dirname(realpath(django.__file__))
 SITE_ROOT = dirname(dirname(realpath(__file__)))
 
 path = lambda *args: join(SITE_ROOT, *args)
-
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'citationneeded')
-AWS_QUERYSTRING_AUTH = False
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -25,7 +16,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = postgresify()
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'quotes.sqlite'
+    }
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -55,7 +51,7 @@ USE_TZ = True
 MEDIA_ROOT = path('media')
 STATIC_ROOT = path('static')
 
-STATIC_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = '/static/'
 MEDIA_URL = STATIC_URL + 'media/'
 
 # Additional locations of static files
@@ -65,31 +61,12 @@ STATICFILES_DIRS = (
 
 # List of finder classes that know how to find static files in
 # various locations.
-STATICFILES_FINDERS = DEFAULT_SETTINGS.STATICFILES_FINDERS + (
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
-COMPRESS_ENABLED = True
-
-if COMPRESS_ENABLED:
-    COMPRESS_CSS_FILTERS = [
-        'compressor.filters.css_default.CssAbsoluteFilter',
-        'compressor.filters.cssmin.CSSMinFilter',
-    ]
-    COMPRESS_STORAGE = 'quotes.utils.CachedS3BotoStorage'
-    COMPRESS_URL = STATIC_URL
-    COMPRESS_OFFLINE = True
-
-
-if COMPRESS_ENABLED:
-    COMPRESS_CSS_FILTERS = [
-        'compressor.filters.css_default.CssAbsoluteFilter',
-        'compressor.filters.cssmin.CSSMinFilter',
-    ]
-    COMPRESS_STORAGE = 'quotes.utils.CachedS3BotoStorage'
-    COMPRESS_URL = STATIC_URL
-    COMPRESS_OFFLINE = True
-
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '_6nl4zm1v9t#@&amp;yv*#6h11cqor5*nvm5=9rz&amp;@j#sekpt+af7r'
@@ -135,8 +112,10 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'south',
+    'taggit',
     'storages',
     'compressor',
+    'quotes.quotes',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -168,10 +147,5 @@ LOGGING = {
     }
 }
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-try:
-    from local_settings import *
-except ImportError:
-    pass
+COMPRESSION_ENABLED = False
