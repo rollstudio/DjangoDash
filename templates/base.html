@@ -55,31 +55,6 @@
       </div>
       <div id="middle_column">
         {% block content_middle %}
-        <ul id="wrapper">
-            <li id="about" style="display:none">
-            <div class="container">
-              <h3>About <br/>the project</h3>
-              <div class="content">
-                {% chunk "about" %}
-              </div>
-            </div>
-            <div class="view">
-                <a href="#" title="Write your Dixit">Write your Dixit</a>
-            </div>
-            </li>
-            
-            {% if request.user.is_authenticated %}
-            Hello!
-            {% else %}
-            <li id="login">
-      	        </li>
-        {% endif %}
-
-        </ul>
-        <div class="prev_next">
-          <a href="#" title="prev" class="prev disabled">prev</a>
-          <a href="#" title="next" class="next">next</a>
-        </div>
         {% endblock content_middle %}
       </div>
       <div id="right_column">
