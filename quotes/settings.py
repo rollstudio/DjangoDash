@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'taggit',
     'storages',
     'compressor',
+    'chunks',
 
     'allauth',
     'allauth.account',
