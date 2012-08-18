@@ -2,7 +2,7 @@ from django.conf import settings
 
 from pymongo import Connection
 
-connection = Connection(settings.get('MONGODB_STRING', ''))
+connection = Connection(getattr(settings, 'MONGODB_STRING', ''))
 
 db = connection.hit_counter
 
