@@ -1,10 +1,17 @@
+from urlparse import urlparse
+
 from django.conf import settings
 
 from pymongo import Connection
 
-connection = Connection(getattr(settings, 'MONGODB_STRING', ''))
+mongodb_string = getattr(settings, 'MONGODB_STRING', '')
+s = urlparse(mongodb_string)
+
+connection = Connection(mongodb_string)
 
 db = connection.hit_counter
+
+db.authenticate(s.username, s.password)
 
 hits = db.hits
 single_hits = db.single_hits
