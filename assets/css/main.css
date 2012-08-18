@@ -158,7 +158,7 @@ transition: color 0.4s ease-in;}
 #form_register legend{font-size: 30px;margin-top: 12px;line-height: 40px;margin-bottom: 20px;}
 #form_register fieldset{border:none;}
 #form_register label{display:block; float:left; text-align:right; width:40%;font-weight:bold; margin-right:10px;}
-.input_signin{background:none; border:1px solid #000;width:50%;font-family:Helvetica,"Arial Black",Arial,Gadget,sans-serif;text-transform:uppercase;font-size:10px;font-weight:bold;}
+input, textarea {background:none; border:1px solid #000;width:50%;font-family:Helvetica,"Arial Black",Arial,Gadget,sans-serif;text-transform:uppercase;font-size:10px;font-weight:bold;}
 
 #form_your_id {margin-top: 40px;}
 #form_your_id ul{width:100%;list-style-type:none;}
