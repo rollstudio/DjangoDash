@@ -1,9 +1,11 @@
-from django.forms import ModelForm
+from django import forms
 
 from .models import Quote
 
 
-class QuoteForm(ModelForm):
+class QuoteForm(forms.ModelForm):
+    author = forms.CharField()
+
     class Meta:
         model = Quote
         exclude = ('user', 'metadata')
