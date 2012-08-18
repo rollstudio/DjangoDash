@@ -1,5 +1,8 @@
+from django.core import serializers
+from django.http import HttpResponse, Http404
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
+from django.views.generic.list import BaseListView
 
 from braces.views import LoginRequiredMixin
 
@@ -22,3 +25,24 @@ class QuoteCreate(LoginRequiredMixin, CreateView):
         print 'lol'
 
         return super(QuoteCreate, self).form_valid(form)
+
+
+class GetQuotes(BaseListView):
+
+    limit = 5
+    order = None
+    query = None
+
+    def get_queryset(self):
+
+        try:
+            id = self.request.GET['id']
+        except KeyError:
+            raise Http404
+        limit = self.request.GET.get('limit', self.limit)
+
+        return Quote.objects.filter(**{self.query: id}).order_by(self.order)[:limit]
+
+    def render_to_response(self, context):
+        content = serializers.serialize("json", context['object_list'])
+        return HttpResponse(content, content_type='application/json')
