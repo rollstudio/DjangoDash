@@ -25,14 +25,14 @@
 
     {% block head %}{% endblock head %}
 </head>
-<body id="{% block body-id %}{% endblock %}" class="{% block body-class %}{% endblock %}">
+<body id="{% block body-id %}default{% endblock %}" class="{% block body-class %}default{% endblock %}">
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
     {% block body %}
 
     <header>
         <hgroup>
         <h1><span>Ipse</span><br /><span>dixit</span></h1>
-        <h2>AN EXPERIMENTAL PROJECT. <br/>
+        <h2>AN EXPERIMENTAL PROJECT. </h2>
         <h2>{% chunk "tagline" %}</h2>
       </hgroup>
     </header>
@@ -58,7 +58,7 @@
         {% endblock content_middle %}
       </div>
       <div id="right_column">
-        <ul id="wrapper" style="height:100%">   <!--(@partick: calcola altezza come numero item più due zeri)-->
+        <ul class="wrapper" style="height:100%">   <!--(@partick: calcola altezza come numero item più due zeri)-->
           <li>
             <div class="container">
                 {% get_last_quote_by_index 1 as quote %}

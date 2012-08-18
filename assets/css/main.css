@@ -128,8 +128,8 @@ transition: color 0.4s ease-in;}
 #middle_column .signup_list li a:hover{border:1px solid #666; color:#666;}
 
 #right_column{width:25%; background:#F1F1F1;overflow:hidden;}
-#right_column ul#wrapper{height:100%;list-style-type:none; }
-#right_column ul#wrapper li{height:100%;}
+#right_column ul.wrapper{height:100%;list-style-type:none; }
+#right_column ul.wrapper li{height:100%;}
 #right_column h3{font-size: 40px;margin-top: 12px;line-height: 40px;margin-bottom: 20px;}
 
 .prev_next{position:absolute; bottom:40px; left:20px;font-size:14px; font-weight:bold;}
