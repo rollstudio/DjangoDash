@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} - Add a Quote!{% endblock title %}
+
+{% block body %}
+
+<form action="" method="POST">
+  {{ form.as_table }}
+  <input type="submit" value="Submit" />
+</form>
+
+{% endblock body %}
+
