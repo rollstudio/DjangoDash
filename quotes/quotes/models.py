@@ -20,4 +20,7 @@ class Quote(models.Model):
 
     language = models.CharField(max_length=2, choices=settings.LANGUAGES)
 
+    source = models.CharField(max_length=200, blank=True, null=True)
+    metadata = models.TextField(blank=True, null=True)
+
     tags = TaggableManager()
