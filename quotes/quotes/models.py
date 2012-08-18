@@ -49,7 +49,7 @@ def quote_post_save(sender, instance, created, *args, **kwargs):
         return
 
     try:
-        token = SocialAccount.objects.get(user=instance.user).socialtoken_set.get(app=app).token
+        token = SocialAccount.objects.get(user=instance.user, provider='Facebook').socialtoken_set.get(app=app).token
 
         graph = facebook.GraphAPI(token)
         graph.put_object("me", "citationneeded:share", quote=instance.get_full_url())
