@@ -1,0 +1,14 @@
+[
+    {
+        "pk": 1,
+        "model": "quotes.quote",
+        "fields": {
+            "body": "You can clean up the mess, but don't touch my coffin. ",
+            "language": "en",
+            "author": null,
+            "source": "http://www.imdb.com/title/tt0060315/quotes?qt=qt0311016",
+            "user": 1,
+            "metadata": ""
+        }
+    }
+]

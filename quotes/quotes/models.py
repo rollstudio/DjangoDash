@@ -16,7 +16,7 @@ class Quote(models.Model):
     body = models.TextField()
 
     user = models.ForeignKey(User, related_name='quotes', blank=True, null=True)
-    author = models.ForeignKey(Author, related_name='quotes')
+    author = models.ForeignKey(Author, related_name='quotes', blank=True, null=True)
 
     language = models.CharField(max_length=2, choices=settings.LANGUAGES)
 
