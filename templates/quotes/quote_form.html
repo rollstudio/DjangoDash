@@ -2,23 +2,10 @@
 {% block title %}{{ block.super }} - Add a Quote!{% endblock title %}
 
 {% block content_middle %}
-    <ul id="wrapper">
-      <li id="your_id">
-      	<div class="container">
-      		<h3>YOUR ID</h3>
-          <div class="content">
-          	SED VITAE EUISMOD NISI. PHASELLUS UT VELIT AC TURPIS SCELERISQUE FAUCIBUS.
-            <form id="form_your_id" method="POST" action="">
-              {% csrf_token %}
-            	<fieldset>
-					{{ form.as_p }}
-                    <input type="submit" value="Submit" class="submit_form" />
-              </fieldset>
-            </form>
-          </div>
-        </div>
-        </li>
-      </ul>
-
+<ul id="wrapper">
+  <li id="your_id">
+    {% include "quote_form_partial.html" %}
+  </li>
+</ul>
 {% endblock content_middle %}
 

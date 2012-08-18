@@ -6,6 +6,8 @@ from braces.views import LoginRequiredMixin
 
 from allauth.account.forms import LoginForm, SignupForm
 
+from .quotes.forms import QuoteForm
+
 admin.autodiscover()
 
 
@@ -16,6 +18,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['login_form'] = LoginForm()
         context['signup_form'] = SignupForm()
+        context['add_quote_form'] = QuoteForm()
         return context
 
 urlpatterns = patterns('',
