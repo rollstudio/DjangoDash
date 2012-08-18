@@ -73,25 +73,11 @@
         </div>
       </div>
       <div id="right_column">
-        <ul id="wrapper" style="height:400%">   <!--(@partick: calcola altezza come numero item più due zeri)-->
+        <ul id="wrapper" style="height:100%">   <!--(@partick: calcola altezza come numero item più due zeri)-->
           <li>
             <div class="container">
-             {% include "quotes/quote.html" %}
-            </div>
-          </li>
-          <li>
-            <div class="container">
-             {% include "quotes/quote.html" %}
-            </div>
-          </li>
-          <li>
-            <div class="container">
-             {% include "quotes/quote.html" %}
-            </div>
-          </li>
-          <li>
-            <div class="container">
-             {% include "quotes/quote.html" %}
+                {% get_last_quote_by_index 1 as quote %}
+                {% include "quotes/quote.html" %}
             </div>
           </li>
        </ul>

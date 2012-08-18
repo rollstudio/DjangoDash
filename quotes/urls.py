@@ -1,21 +1,16 @@
 from django.contrib import admin
 from django.conf.urls import patterns, include, url
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView
 
 admin.autodiscover()
 
 
-class ComingSoonView(TemplateView):
-    template_name = 'comingsoon.html'
-
-
-class HomeView(RedirectView):
-    url = '/coming'
+class HomeView(TemplateView):
+    template_name = 'base.html'
 
 urlpatterns = patterns('',
     # Examples:
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^coming$', ComingSoonView.as_view()),
     url(r'^$', HomeView.as_view()),
     url(r'^quotes/', include('quotes.quotes.urls')),
     #url(r'^show/(?P<object_id>\d+)$',
