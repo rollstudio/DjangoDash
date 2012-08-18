@@ -15,8 +15,8 @@ AWS_QUERYSTRING_AUTH = False
 DEFAULT_FROM_EMAIL = 'patrick.arminio@gmail.com'
 
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_HOST_USER = os.environ.get('SENDGRID_USERNAME', '')
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', '')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
