@@ -2,11 +2,19 @@ from django.contrib import admin
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
+from allauth.account.forms import LoginForm, SignupForm
+
 admin.autodiscover()
 
 
 class HomeView(TemplateView):
     template_name = 'base.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['login_form'] = LoginForm()
+        context['signup_form'] = SignupForm()
+        return context
 
 urlpatterns = patterns('',
     # Examples:
