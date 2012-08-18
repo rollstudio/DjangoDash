@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 
+from taggit.managers import TaggableManager
+
 class Author(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
@@ -16,3 +18,5 @@ class Quote(models.Model):
     author = models.ForeignKey(Author, related_name='quotes')
 
     language = models.CharField(max_length=2, choices=settings.LANGUAGES)
+
+    tags = TaggableManager()
