@@ -16,6 +16,7 @@ class HomeView(RedirectView):
 
 urlpatterns = patterns('',
     # Examples:
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^coming$', ComingSoonView.as_view()),
     url(r'^$', HomeView.as_view()),
     url(r'^add$', 'django.views.generic.create_update.create_object',

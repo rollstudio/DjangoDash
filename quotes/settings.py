@@ -82,6 +82,12 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+    'allauth.account.context_processors.account',
+    'allauth.socialaccount.context_processors.socialaccount',
+)
+
+AUTHENTICATION_BACKENDS = DEFAULT_SETTINGS.AUTHENTICATION_BACKENDS + (
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -117,12 +123,24 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
 
+    'quotes.quotes',
+    'socialshare',
+
     'south',
     'taggit',
     'storages',
     'compressor',
-    'quotes.quotes',
-    'socialshare',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.openid',
+    'allauth.socialaccount.providers.twitter',
+    'emailconfirmation',
 )
 
 # A sample logging configuration. The only tangible logging
