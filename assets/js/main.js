@@ -138,6 +138,10 @@
     }
 
     function setMiddleColumn() {
+        if ($body.attr('id') !== 'home') {
+            return;
+        }
+
         var $column = $('#middle_column');
         var $prev = $column.find('.prev');
         var $next = $column.find('.next');
