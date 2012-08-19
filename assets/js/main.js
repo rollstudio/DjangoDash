@@ -154,7 +154,7 @@
             lastId = quotes.eq(quotes.length - 1).data('id');
         }
 
-        $column.on('click', '.prev_next a:not(.disabled)', function(e) {
+        $column.on('click', '.prev_next:not(.loading) a:not(.disabled)', function(e) {
             e.preventDefault();
 
             var $$ = $(this);
@@ -163,7 +163,7 @@
 
             if ($$.attr('class') === 'next') {
                 current += 1;
-
+                $column.find('.prev_next').addClass('loading');
                 ajaxPromise = $.ajax({
                     url: url,
                     type: 'get',
@@ -182,8 +182,9 @@
                     if (current >= $wrapper.find('li .quote').length - 1) {
                         $next.addClass('disabled');
                     }
+                }).done(function() {
+                    $column.find('.prev_next').removeClass('loading');
                 });
-
             } else {
                 current -= 1;
                 $next.removeClass('disabled');
