@@ -20,19 +20,9 @@ class HomeView(TemplateView):
         return context
 
 urlpatterns = patterns('',
+    url(r'^$', HomeView.as_view()),
     url(r'^accounts/social/connections/$', RedirectView.as_view(url='/')),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^$', HomeView.as_view()),
     url(r'^quotes/', include('quotes.quotes.urls')),
-
-    #url(r'^show/(?P<object_id>\d+)$',
-    #    'django.views.generic.list_detail.object_detail',
-    #    {'queryset': Quote.objects.all()}),
-    # url(r'^quotes/', include('quotes.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )

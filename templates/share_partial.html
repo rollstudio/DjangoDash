@@ -9,9 +9,9 @@
 </div>
 
 {% if user.is_authenticated %}
-{% get_starred as liked %}
-<div class="vote {% if not liked %}not-{% endif %}liked" data-id="{{ pk }}" data-add="{% url add-like %}" data-delete="{% url delete-like %}">
-  <a href="#">Vote{% if liked %}d{% endif %}</a>
+{% get_starred as starred %}
+<div class="vote {% if not starred %}not-{% endif %}liked" data-id="{{ pk }}" data-add="{% url add-star %}" data-delete="{% url delete-star %}">
+  <a href="#">Vote{% if starred %}d{% endif %}</a>
   {% csrf_token %}
 {% else %}
 <div class="vote" data-id="{{ pk }}">
