@@ -1,5 +1,6 @@
 from django.core import serializers
 from django.http import HttpResponse, Http404
+from django.db.models import ObjectDoesNotExist
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import BaseListView
@@ -44,6 +45,7 @@ class GetQuotes(BaseListView):
         content = serializers.serialize("json", context['object_list'])
         return HttpResponse(content, content_type='application/json')
 
+
 class GetQuote(DetailView):
 
     order = None
@@ -63,8 +65,7 @@ class GetQuote(DetailView):
 
         try:
             obj = queryset.filter(**{self.query: pk}).order_by(self.order)[0]
-        except ObjectDoesNotExist:
+        except (ObjectDoesNotExist, IndexError):
             raise Http404
 
         return obj
-
