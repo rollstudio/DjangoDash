@@ -292,6 +292,17 @@
         });
     }
 
+    function animateLogo(from, to) {
+        from = from || '#000';
+        to = to || '#fe57a1';
+
+        var logo = $('header h1 a').animate({
+            color: to
+        }, 4000, function() {
+            animateLogo(to, from);
+        });
+    }
+
     $(function() {
         $body = $('body');
         setLogin();
@@ -302,5 +313,6 @@
 
         $('select').customSelect();
         $("#right_column .dixit_text").nanoScroller();
+        animateLogo();
     });
 })(jQuery, window, document);
