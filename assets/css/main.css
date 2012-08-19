@@ -90,7 +90,7 @@ margin-left: 267px;
 line-height: 15px;width:210px;letter-spacing:0;}
 div[role=main]{height:100%;}
 div[role=main] > div{float:left;height:100%;position:relative;}
-#left_column{width:40%;min-width:432px;}
+#left_column{width:40%;min-width:432px; background:url(../img/bg_img.png) no-repeat center center; background-size:cover;}
 #left_column .container{padding:40px;}
 #left_column .container nav{margin-top: 129px;
 margin-left: 229px;
