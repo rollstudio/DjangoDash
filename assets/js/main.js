@@ -52,7 +52,7 @@
         var $form_signin = $('#form_signin');
         var $form_register = $('#form_register');
 
-        $('.signup_list').on('click', 'a', function(e) {
+        $('.signup_list').on('click', 'a.login, a.register', function(e) {
             e.preventDefault();
             var $$ = $(this);
 

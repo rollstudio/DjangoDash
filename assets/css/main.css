@@ -77,7 +77,7 @@ html, body{width:100%; height:100%; background:#FFF;}
 body{ font-family: Helvetica, "Arial Black", Arial,  Gadget, sans-serif; text-transform:uppercase;font-size:14px;}
 h1, h2, h3, h4, h5, h6{font-size:14px;margin:0; padding:0;font-weight:normal; letter-spacing:-4px;}
 ul, li{margin:0; padding:0;}
-header{position:absolute;left:0; top:0;width:50%;z-index:10}
+header{position:absolute;left:0; top:0;width:40%;z-index:10}
 header hgroup{}
 header h1{margin-left:40px;font-size:100px;margin-top:29px;line-height:90px;color:#FF3399; font-weight: normal;
 letter-spacing: -7px;}
@@ -126,12 +126,13 @@ transition: color 0.4s ease-in;}
 #middle_column #about .view {position:absolute; bottom: 80px;left:20px;}
 #middle_column #about .view a{text-decoration:none;color:#FF3399; font-weiht:bold; font-size:25px; letter-spacing:-2px;}
 #middle_column .signin_list{width:100%;list-style-type:none;margin-top:20px;}
-#middle_column .signin_list li{margin:0 0 4px 0;width:auto!important;}
-#middle_column .signin_list li a{padding:0 1px; line-height:12px; border:1px solid #000; color:#000; text-decoration:none;font-weight:bold;}
+#middle_column .signin_list li{margin:0 0 4px 0;width:auto!important; float: none!important; display: block;}
+#middle_column .signin_list li a{padding:0 1px; line-height:12px; border:1px solid #000; color:#000;
+    text-decoration:none;font-weight:bold; }
 #middle_column .signin_list li a:hover{border:1px solid #666; color:#666;}
 
 #middle_column .signup_list{width:100%;list-style-type:none;margin-top:20px;}
-#middle_column .signup_list li{margin:0 0 4px 0;width:auto!important;}
+#middle_column .signup_list li{margin:0 0 4px 0;width:auto!important; float: none!important; display: block;}
 #middle_column .signup_list li a{padding:0 1px; line-height:12px; border:1px solid #666; color:#666; text-decoration:none;font-weight:bold;}
 #middle_column .signup_list li a:hover{border:1px solid #666; color:#666;}
 
@@ -141,8 +142,8 @@ transition: color 0.4s ease-in;}
 -ms-transition: 0.5s linear all;
 -o-transition: 0.5s linear all;
 transition: 0.5s linear all; }
-#right_column:hover{ width:56%; box-shadow: 3px 0px 11px black; }
-#right_column:hover ul.wrapper{width:70%; }
+#home #right_column:hover{ width:56%; box-shadow: 3px 0px 11px black; }
+#home #right_column:hover ul.wrapper{width:70%; }
 #right_column ul.wrapper{height:100%;list-style-type:none; }
 #right_column ul.wrapper li{height:100%;}
 #right_column h3{font-size: 40px;margin-top: 12px;line-height: 40px;margin-bottom: 20px;}
@@ -216,11 +217,11 @@ padding: 0 6px;
 #right_column .share li{display:inline;}
 #right_column .share li a{float:left; display:block; width:15px; height:15px;font-size:1px; text-indent:-9999px;margin-right:3px; padding:0;border:none;}
 #right_column .share li a.share_fb{background:#999 url('../img/social.png') no-repeat left top;}
-#right_column .share li a.share_fb:hover{background:#CCC url('../img/social.png') no-repeat left top;}
+#right_column .share li a.share_fb:hover{background:#FE57A1 url('../img/social.png') no-repeat left top;}
 #right_column .share li a.share_tw{background:#999 url('../img/social.png') no-repeat center top;}
-#right_column .share li a.share_tw:hover{background:#CCC url('../img/social.png') no-repeat center top;}
+#right_column .share li a.share_tw:hover{background:#FE57A1 url('../img/social.png') no-repeat center top;}
 #right_column .share li a.share_gp{background:#999 url('../img/social.png') no-repeat right top;}
-#right_column .share li a.share_gp:hover{background:#CCC url('../img/social.png') no-repeat right top;}
+#right_column .share li a.share_gp:hover{background:#FE57A1 url('../img/social.png') no-repeat right top;}
 
 #home #login .content > form { display: none; }
 
@@ -232,6 +233,16 @@ padding: 0 6px;
 
 #add-quote #middle_column { width: 50%; }
 #add-quote #right_column { display: none; }
+
+#login-page #middle_column { width: 60%; }
+#login-page #middle_column #wrapper{ width: 50%; }
+#login-page #middle_column #wrapper li{ width:100%; }
+#login-page #right_column { display: none; }
+
+#signup-page #middle_column { width: 60%; }
+#signup-page #middle_column #wrapper{ width: 50%; }
+#signup-page #middle_column #wrapper li{ width:100%; }
+#signup-page #right_column { display: none; }
 
 
 .custom-select {
