@@ -20,7 +20,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', '')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-#DATABASES = postgresify()
+DATABASES = postgresify()
 
 STATIC_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_URL = STATIC_URL + 'media/'
