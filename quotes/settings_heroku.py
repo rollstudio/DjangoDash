@@ -32,10 +32,6 @@ STATICFILES_FINDERS += (
 )
 
 if COMPRESS_ENABLED:
-    COMPRESS_CSS_FILTERS = [
-        'compressor.filters.css_default.CssAbsoluteFilter',
-        'compressor.filters.cssmin.CSSMinFilter',
-    ]
     COMPRESS_STORAGE = 'quotes.utils.CachedS3BotoStorage'
     COMPRESS_URL = STATIC_URL
     COMPRESS_OFFLINE = True
