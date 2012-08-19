@@ -128,7 +128,7 @@
         var $prev = $column.find('.prev');
         var $next = $column.find('.next');
 
-        $('#write-your-dixit').on('click', function(e) {
+        $('.write-your-dixit').on('click', function(e) {
             e.preventDefault();
             $next.trigger('click');
         });
