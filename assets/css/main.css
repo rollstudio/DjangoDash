@@ -126,6 +126,10 @@ nav ul.single {position: relative; top: 17px;}
 /*.dixit_details a:hover { color: #00E; }*/
 .dixit_text{ font-size:22px;margin-bottom:40px;line-height:22px;}
 
+<<<<<<< HEAD
+=======
+/*.quote .content { text-transform: none; }*/
+>>>>>>> 37ed0e0df4f5811b2b0120afbc3eebe969b1e5a7
 
 #middle_column .container, #right_column .quote{padding:20px;}
 #right_column .quote{height:100%;}
@@ -134,7 +138,11 @@ nav ul.single {position: relative; top: 17px;}
 #middle_column ul#wrapper li{width:25%;height:100%; float:left;}
 #middle_column ul#wrapper h3{font-size:40px; margin-top:12px;line-height:40px;margin-bottom:20px;}
 #middle_column #about{float:left;position:relative;font-size:14px;}
+<<<<<<< HEAD
 
+=======
+/*#middle_column #about .content{text-transform: none;}*/
+>>>>>>> 37ed0e0df4f5811b2b0120afbc3eebe969b1e5a7
 #middle_column #about .view {position:absolute; bottom: 80px;left:20px;}
 #middle_column #about .view a{text-decoration:none;color:#FF3399; font-weiht:bold; font-size:25px; letter-spacing:-2px;}
 #middle_column .signin_list{width:100%;list-style-type:none;margin-top:20px;}
@@ -286,13 +294,13 @@ padding: 0 6px;
 }
 
 /** initial setup **/
-.nano {
+#right_column .nano {
   position : relative;
   width    : 100%;
   height   : 100%;
   overflow : hidden;
 }
-.nano .content {
+#right_column .nano .content {
   position      : absolute;
   overflow      : scroll;
   overflow-x    : hidden;
