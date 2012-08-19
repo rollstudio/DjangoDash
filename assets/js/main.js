@@ -190,8 +190,6 @@
                     if (current >= $wrapper.find('li .quote').length - 1) {
                         $next.addClass('disabled');
                     }
-                }).done(function() {
-                    $column.find('.prev_next').removeClass('loading');
                 });
             } else {
                 current -= 1;
@@ -206,6 +204,8 @@
                 } else {
                     $prev.removeClass('disabled');
                 }
+
+                $column.find('.prev_next').removeClass('loading');
             });
         });
     }
