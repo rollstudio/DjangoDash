@@ -133,7 +133,13 @@ transition: color 0.4s ease-in;}
 #middle_column .signup_list li a{padding:0 1px; line-height:12px; border:1px solid #666; color:#666; text-decoration:none;font-weight:bold;}
 #middle_column .signup_list li a:hover{border:1px solid #666; color:#666;}
 
-#right_column{width:25%; background:#F1F1F1;overflow:hidden;}
+#right_column{width:25%; background:#F1F1F1;overflow:hidden;position: absolute;right:0;
+-webkit-transition: 0.5s linear all;
+-moz-transition: 0.5s linear all;
+-ms-transition: 0.5s linear all;
+-o-transition: 0.5s linear all;
+transition: 0.5s linear all; }
+#right_column:hover{width:50%; }
 #right_column ul.wrapper{height:100%;list-style-type:none; }
 #right_column ul.wrapper li{height:100%;}
 #right_column h3{font-size: 40px;margin-top: 12px;line-height: 40px;margin-bottom: 20px;}
