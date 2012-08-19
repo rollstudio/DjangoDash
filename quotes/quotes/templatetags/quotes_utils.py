@@ -4,6 +4,8 @@ from quotes.quotes.models import Quote
 
 register = template.Library()
 
+from allauth.socialaccount.models import SocialApp
+
 
 @register.assignment_tag
 def get_latest_quote():
@@ -30,3 +32,11 @@ else:
     @register.assignment_tag
     def get_home_quote():
         return get_latest_quote()
+
+
+@register.simple_tag
+def get_facebook_app_id():
+    try:
+        return SocialApp.objects.get(name='Facebook').key
+    except SocialApp.DoesNotExist:
+        return ''

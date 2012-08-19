@@ -25,7 +25,7 @@ DATABASES = postgresify()
 STATIC_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_URL = STATIC_URL + 'media/'
 
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 
 STATICFILES_FINDERS += (
     'compressor.finders.CompressorFinder',

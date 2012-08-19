@@ -1,6 +1,53 @@
 (function($, window, document) {
     var $body;
 
+    function shareOnFacebook(url, title, text) {
+        var data = {
+            app_id: window.appId,
+            link: url,
+            name: title,
+            description: text,
+            method: 'feed'
+        };
+
+        FB.ui(data);
+    }
+
+    function share(type, url, description) {
+        var data = {
+            url: url,
+            text: 'Check this quote!'
+        };
+
+        switch (type) {
+            case 'share_fb':
+                shareOnFacebook(url, data.text, description);
+                return;
+            case 'share_tw':
+                url = 'https://twitter.com/intent/tweet?' + $.param(data);
+            break;
+            case 'share_gp':
+                url = 'https://plus.google.com/share?' + $.param(data);
+            break;
+        }
+
+        window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+    }
+
+
+    function setSharing() {
+        $('.share').each(function() {
+            var $$ = $(this);
+            var url = $$.data('url');
+            var description = $$.data('description');
+
+            $$.on('click', '.share_buttons a', function(e) {
+                e.preventDefault();
+                share($(this).attr('class'), url, description);
+            });
+        });
+    }
+
     function setLogin() {
         var $form_signin = $('#form_signin');
         var $form_register = $('#form_register');
@@ -91,6 +138,10 @@
     }
 
     function setMiddleColumn() {
+        if ($body.attr('id') !== 'home') {
+            return;
+        }
+
         var $column = $('#middle_column');
         var $prev = $column.find('.prev');
         var $next = $column.find('.next');
@@ -98,6 +149,11 @@
         $('.write-your-dixit').on('click', function(e) {
             e.preventDefault();
             $next.trigger('click');
+        });
+
+        $('.about-the-project').on('click', function(e) {
+            e.preventDefault();
+            $prev.trigger('click');
         });
 
         $next.on('click', function(e) {
@@ -126,6 +182,7 @@
         setLogin();
         setMiddleColumn();
         setNextPrev();
+        setSharing();
 
         $('select').customSelect();
     });
