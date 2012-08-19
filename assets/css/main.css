@@ -153,7 +153,7 @@ transition: 0.5s linear all; }
 #right_column h3 a{color: black; text-decoration: none;}
 #right_column h3 a:visited{color: black; }
 .dixit_text.nano { width: 80%; height: 200px; padding-right: 20%;  }
-/*.dixit_text.nano .content { padding: 0 20% 0 0; }*7
+/*.dixit_text.nano .content { padding: 0 20% 0 0; }*/
 
 .prev_next{position:fixed; bottom:40px; margin-left:20px;font-size:14px; font-weight:bold;}
 .prev_next a{display:block; float:left; clear:both; border:1px solid #000;color:#000; text-decoration:none;padding: 0 1px;margin-top: 4px;padding-right: 16px;line-height: 14px;}
