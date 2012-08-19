@@ -41,6 +41,12 @@ class Quote(models.Model):
     def get_full_url(self):
         return ''.join(['http://', Site.objects.get_current().domain, self.get_absolute_url()])
 
+    def __unicode__(self):
+        if self.title:
+            return self.title
+        else:
+            return self.body[:50]
+
 
 def quote_post_save(sender, instance, created, *args, **kwargs):
     if not created:
