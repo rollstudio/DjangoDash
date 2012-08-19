@@ -45,10 +45,12 @@
                 <li><a href="#" title="Write your dixit">Write your dixit</a></li>
             </ul>
           </nav>
+          {% block main-quote %}
           <div class="main_dixit">
             {% get_home_quote as quote %}
             {% include "quotes/quote.html" %}
           </div>
+          {% endblock main-quote %}
         </div>
       </div>
       <div id="middle_column">

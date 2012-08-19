@@ -198,6 +198,8 @@ input, textarea {background:none; border:1px solid #000;width:50%;font-family:He
 
 #home #login .content > form { display: none; }
 
+#single #middle_column { display: none; }
+#single #right_column { width: 50%; }
 
 /* =============================================================================
    Media Queries

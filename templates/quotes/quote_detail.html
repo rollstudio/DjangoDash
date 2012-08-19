@@ -5,13 +5,20 @@
 {% load google_tags %}
 
 {% block head %}
-    {% opengraph_tag title='Quote by ...' type="citationneeded:quote" url=request.get_full_path %}
+    {% opengraph_tag title=quote type="citationneeded:quote" url=request.get_full_path %}
 {% endblock head %}
 
+{% block body-id %}single{% endblock body-id %}
+{% block content_middle %}
+{% endblock content_middle %}
 
-{% block content %}
-    {{ object.body }}
+{% block right-column %}
+    {% with object as quote %}
 
-    {% tweet_link "tweet this" text="Yeah! Tweet me ♥" %}
-    {% google_plus_link "plus this" request.get_full_path %}
-{% endblock content %}
+    {% include "quotes/quote.html" %}
+
+    {% endwith  %}
+{% endblock right-column %}
+
+{% block main-quote %}
+{% endblock main-quote %}
