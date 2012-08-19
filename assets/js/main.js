@@ -27,16 +27,20 @@
         }
 
         var $column = $('#right_column');
+        var $wrapper = $column.find('.wrapper');
         var $prev = $column.find('.prev');
         var $next = $column.find('.next');
 
         var current = 0;
-        var lastId = window.lastQuoteId;
+        var lastId = 0;
         var url = window.nextQuoteUrl;
+        var quotes = $column.find('.wrapper .quote');
 
-        if ($column.find('.wrapper li').length === 0) {
+        if (quotes.length < 2) {
             $column.find('.prev_next a').addClass('disabled');
             return;
+        } else {
+            lastId = quotes.eq(quotes.length - 1).data('id');
         }
 
         $column.on('click', '.prev_next a:not(.disabled)', function(e) {
@@ -57,14 +61,17 @@
                         limit: 1
                     }
                 }).success(function(data) {
-                    if (data.length > 0) {
-                        lastId = data[0].pk;
-                    } else {
-                        $next.addClass('disabled');
-                    }
+                    var $li = $('<li />');
+                    var $quote = $(data).appendTo($li);
+
+                    lastId = $quote.data('id');
+                    $wrapper.append($li);
+                }).fail(function() {
+                    $next.addClass('disabled');
                 });
             } else {
                 current -= 1;
+                $next.removeClass('disabled');
             }
 
             $.when(ajaxPromise, $column.animate({

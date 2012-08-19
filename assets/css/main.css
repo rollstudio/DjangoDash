@@ -110,7 +110,7 @@ transition: color 0.4s ease-in;}
 .dixit_details p{margin:0;}
 .dixit_text{ font-size:22px;margin-bottom:40px;line-height:22px;}
 
-#middle_column .container, #right_column .container{padding:20px;}
+#middle_column .container, #right_column .quote{padding:20px;}
 #middle_column{width:25%; background:#FBFBFB;overflow:hidden;}
 #middle_column ul#wrapper{list-style-type:none; width:400%;height:100%; }
 #middle_column ul#wrapper li{width:25%;height:100%; float:left;}

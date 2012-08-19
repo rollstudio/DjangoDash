@@ -62,18 +62,14 @@
 {% block right-column %}
   <ul class="wrapper" style="height:100%">
     <li>
-      <div class="container">
-          {% get_last_quote_by_index 1 as quote %}
-          {% include "quotes/quote.html" %}
-      </div>
+      {% get_last_quote_by_index 1 as quote %}
+      {% include "quotes/quote.html" %}
     </li>
     {% get_last_quote_by_index 2 as quote %}
 
     {% if quote %}
     <li>
-      <div class="container">
-        {% include "quotes/quote.html" %}
-      </div>
+      {% include "quotes/quote.html" %}
     </li>
     {% endif %}
  </ul>
@@ -84,7 +80,6 @@
 </div>
 
 <script>
-  window.lastQuoteId = {{ quote.pk }};
   window.nextQuoteUrl = '{% url get-next-quote %}';
 </script>
 
