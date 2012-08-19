@@ -89,6 +89,9 @@ margin-top: -174px;
 margin-left: 267px;
 line-height: 15px;width:210px;letter-spacing:0;}
 header h2 p { margin: 0; }
+header h2 p.author { font-size: 13px;
+text-transform: capitalize;
+font-style: italic; }
 div[role=main]{height:100%;}
 div[role=main] > div{float:left;height:100%;position:relative;}
 #left_column{width:40%;min-width:432px;/* background:url(../img/bg_img.png) no-repeat center center; background-size:cover;*/}
