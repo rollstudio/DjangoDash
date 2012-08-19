@@ -108,7 +108,6 @@ transition: color 0.4s ease-in;}
 #left_column .main_dixit h3{font-size: 70px; line-height: 1;}
 #left_column .main_dixit h3 a { text-decoration: none; color: black; }
 #left_column .main_dixit h3 a:visited { text-decoration: none; color: black; }
-#left_column .main_dixit .share{display: none;}
 #left_column .dixit_details{color:#666; font-size: 14px;width:60%;min-width:432px;}
 
 .dixit_details{color:#666;min-width:216px;}
