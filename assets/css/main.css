@@ -218,6 +218,11 @@ padding: 0 6px;
 
 #page-404 #right_column h2 { font-size: 60px; margin: 20px; }
 
+
+#add-quote #middle_column { width: 50%; }
+#add-quote #right_column { display: none; }
+
+
 .custom-select {
     position: relative;
     display: inline-block;
