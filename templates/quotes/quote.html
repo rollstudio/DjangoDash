@@ -1,4 +1,6 @@
-<h3>ID {{quote.pk}}</h3>
+{% if quote.title %}
+<h3>{{quote.title}}</h3>
+{% endif %}
 <div class="dixit_text">
   {{ quote.body|linebreaks }}
 </div>

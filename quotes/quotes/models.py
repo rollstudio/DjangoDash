@@ -20,6 +20,7 @@ class Author(models.Model):
 
 
 class Quote(models.Model):
+    title = models.CharField(max_length=100, blank=True, null=True)
     body = models.TextField()
 
     user = models.ForeignKey(User, related_name='quotes', blank=True, null=True)
