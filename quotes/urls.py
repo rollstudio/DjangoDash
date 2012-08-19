@@ -3,7 +3,6 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
 from allauth.account.forms import LoginForm, SignupForm
-from quotes.views import GetQuote
 
 from .quotes.forms import QuoteForm
 
@@ -25,8 +24,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('allauth.urls')),
     url(r'^$', HomeView.as_view()),
     url(r'^quotes/', include('quotes.quotes.urls')),
-    url(r'^quotes/next/$', GetQuote.as_view(order='-id', query='id__gt'), name='get-next-quote'),
-    url(r'^quotes/prev/$', GetQuote.as_view(order='id', query='id__lt')),
+
     #url(r'^show/(?P<object_id>\d+)$',
     #    'django.views.generic.list_detail.object_detail',
     #    {'queryset': Quote.objects.all()}),
