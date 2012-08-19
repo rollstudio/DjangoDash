@@ -1,5 +1,9 @@
 from django.core.files.storage import get_storage_class
+
 from storages.backends.s3boto import S3BotoStorage
+
+from compressor.utils import staticfiles
+from compressor.filters.css_default import CssAbsoluteFilter
 
 
 class CachedS3BotoStorage(S3BotoStorage):
@@ -14,3 +18,9 @@ class CachedS3BotoStorage(S3BotoStorage):
         name = super(CachedS3BotoStorage, self).save(name, content)
         self.local_storage._save(name, content)
         return name
+
+
+class MyCssAbsoluteFilter(CssAbsoluteFilter):
+    def find(self, basename):
+        if basename and staticfiles.finders:
+            return staticfiles.finders.find(basename)
