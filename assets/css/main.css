@@ -109,7 +109,7 @@ transition: color 0.4s ease-in;}
 #left_column .main_dixit .share{display: none;}
 #left_column .dixit_details{color:#666; font-size: 14px;width:60%;min-width:432px;}
 
-.dixit_details{color:#666;width:60%;min-width:216px;}
+.dixit_details{color:#666;min-width:216px;}
 .dixit_details p{margin:0;}
 .dixit_text{ font-size:22px;margin-bottom:40px;line-height:22px;}
 

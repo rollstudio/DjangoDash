@@ -7,8 +7,10 @@
   </div>
   <div class="dixit_details">
       <p><strong>BY:</strong> {{ quote.author|default:"Anonymous" }}</p>
-      {% if quote.source %}<p><strong>SOURCE:</strong> <a href="{{ quote.source }}">{{ quote.source }}</a></p>{% endif %}
-      <p><strong>TAG:</strong> {{ quote.tags.all|join:',' }}</p>
+      {% if quote.source %}
+      <p><strong>SOURCE:</strong> <a href="{{ quote.source }}">{{ quote.source|truncatechars:30 }}</a></p>
+      {% endif %}
+      <p><strong>TAG:</strong> {{ quote.tags.all|join:', ' }}</p>
   </div>
   <div class="share">
       <a href="#" title="share">Share</a>
