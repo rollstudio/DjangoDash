@@ -214,6 +214,7 @@ padding: 0 6px;
 #right_column .prev_next a.prev.disabled, #right_column .prev_next a.prev:hover{ background:url('../img/prev_next_right.png') no-repeat -16px 3px;}
 #right_column .prev_next a.next{ background:url('../img/prev_next_right.png') no-repeat 44px -17px}
 #right_column .prev_next a.next.disabled, #right_column .prev_next a.next:hover{  background:url('../img/prev_next_right.png') no-repeat -16px -17px;}
+#right_column .main_dixit h4 a{font-size: 20px;letter-spacing: -1px;text-decoration: none;color: #FF3399;}
 
 .share{margin:20px 0 4px 0; overflow: hidden;}
 .share a, .vote a{float:left; margin-right:3px;color:#999;
