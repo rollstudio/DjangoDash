@@ -74,7 +74,7 @@ td { vertical-align: top; }
    Author: Roll Multimedia Design
    ========================================================================== */
 html, body{width:100%; height:100%; background:#FFF;}
-body{ font-family: Helvetica, "Arial Black", Arial,  Gadget, sans-serif; text-transform:uppercase;font-size:14px;}
+body{ font-family: Helvetica, "Arial Black", Arial,  Gadget, sans-serif; text-transform:uppercase;font-size:14px; background:url(../img/bg_img_landscape.png) no-repeat center center; background-size:cover;}
 h1, h2, h3, h4, h5, h6{font-size:14px;margin:0; padding:0;font-weight:normal; letter-spacing:-4px;}
 ul, li{margin:0; padding:0;}
 header{position:absolute;left:0; top:0;width:40%;z-index:10}
@@ -90,7 +90,7 @@ margin-left: 267px;
 line-height: 15px;width:210px;letter-spacing:0;}
 div[role=main]{height:100%;}
 div[role=main] > div{float:left;height:100%;position:relative;}
-#left_column{width:40%;min-width:432px; background:url(../img/bg_img.png) no-repeat center center; background-size:cover;}
+#left_column{width:40%;min-width:432px;/* background:url(../img/bg_img.png) no-repeat center center; background-size:cover;*/}
 #left_column .container{padding:40px;}
 #left_column .container nav{margin-top: 129px;
 margin-left: 229px;
@@ -119,7 +119,7 @@ transition: color 0.4s ease-in;}
 .dixit_text{ font-size:22px;margin-bottom:40px;line-height:22px;}
 
 #middle_column .container, #right_column .quote{padding:20px;}
-#middle_column{width:30%; background:#FBFBFB;overflow:hidden;}
+#middle_column{width:30%; background:/*#FBFBFB*/ rgba(251,251,251,0.8);overflow:hidden;}
 #middle_column ul#wrapper{list-style-type:none; width:400%;height:100%; }
 #middle_column ul#wrapper li{width:25%;height:100%; float:left;}
 #middle_column ul#wrapper h3{font-size:40px; margin-top:12px;line-height:40px;margin-bottom:20px;}
@@ -137,7 +137,7 @@ transition: color 0.4s ease-in;}
 #middle_column .signup_list li a{padding:0 1px; line-height:12px; border:1px solid #666; color:#666; text-decoration:none;font-weight:bold;}
 #middle_column .signup_list li a:hover{border:1px solid #666; color:#666;}
 
-#right_column{width:30%; background:#F1F1F1;overflow:hidden;position: absolute;right:0;
+#right_column{width:30%; background:/*#F1F1F1*/ rgba(251,251,251,0.8);overflow:hidden;position: absolute;right:0;
 -webkit-transition: 0.5s linear all;
 -moz-transition: 0.5s linear all;
 -ms-transition: 0.5s linear all;
