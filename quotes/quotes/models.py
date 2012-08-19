@@ -20,6 +20,7 @@ class Author(models.Model):
 
 
 class Quote(models.Model):
+    title = models.CharField(max_length=100, blank=True, null=True)
     body = models.TextField()
 
     user = models.ForeignKey(User, related_name='quotes', blank=True, null=True)
@@ -39,6 +40,12 @@ class Quote(models.Model):
 
     def get_full_url(self):
         return ''.join(['http://', Site.objects.get_current().domain, self.get_absolute_url()])
+
+    def __unicode__(self):
+        if self.title:
+            return self.title
+        else:
+            return self.body[:50]
 
 
 def quote_post_save(sender, instance, created, *args, **kwargs):
