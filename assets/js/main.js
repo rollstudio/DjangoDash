@@ -31,7 +31,10 @@
             break;
         }
 
-        window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+        var left = (screen.width/2)- 300;
+        var top = (screen.height/2)-300;
+
+        window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600, top='+top+', left='+lef);
     }
 
 
