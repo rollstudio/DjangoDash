@@ -201,6 +201,8 @@ input, textarea {background:none; border:1px solid #000;width:50%;font-family:He
 #single #middle_column, #page-404 #middle_column { display: none; }
 #single #right_column, #page-404 #right_column { width: 50%; }
 
+#page-404 #right_column h2 { font-size: 60px; margin: 20px; }
+
 /* =============================================================================
    Media Queries
    ========================================================================== */
