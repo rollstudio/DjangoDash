@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.contrib.sites.models import Site
 
 from taggit.managers import TaggableManager
@@ -33,6 +33,8 @@ class Quote(models.Model):
 
     published_on = models.DateTimeField(auto_now_add=True)
 
+    star_count = models.IntegerField(default=0)
+
     tags = TaggableManager()
 
     def get_absolute_url(self):
@@ -46,6 +48,18 @@ class Quote(models.Model):
             return self.title
         else:
             return self.body[:50]
+
+
+class UserStar(models.Model):
+
+    class Meta:
+        unique_together = (('user', 'quote'),)
+
+    user = models.ForeignKey(User, related_name='stars')
+    quote = models.ForeignKey(Quote, related_name='starts')
+
+    def __unicode__(self):
+        return '%s <3 %s' % (self.user.username, self.quote)
 
 
 def quote_post_save(sender, instance, created, *args, **kwargs):
@@ -70,3 +84,16 @@ def quote_post_save(sender, instance, created, *args, **kwargs):
         pass
 
 #post_save.connect(quote_post_save, sender=Quote)
+
+def star_post_save(sender, instance, created, *args, **kwargs):
+    if created:
+        instance.quote.star_count += 1
+        instance.quote.save()
+
+post_save.connect(star_post_save, sender=UserStar)
+
+def star_post_delete(sender, instance, using, **kwargs):
+    instance.quote.star_count -= 1
+    instance.quote.save()
+
+post_delete.connect(star_post_delete, sender=UserStar)

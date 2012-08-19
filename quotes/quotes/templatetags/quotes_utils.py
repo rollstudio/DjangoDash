@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 from quotes.quotes.models import Quote
 
 register = template.Library()
@@ -18,3 +19,14 @@ def get_last_quote_by_index(index):
         return Quote.objects.all().order_by('-published_on')[index]
     except Quote.DoesNotExist:
         return None
+
+if not settings.DEBUG:
+    @register.assignment_tag
+    def get_home_quote():
+        # XXX this is meant to work only on postgres.
+        return Quote.objects.raw('SELECT * FROM quotes_quote ORDER BY'
+                                 ' RANDOM()*star_count DESC LIMIT 1')[0]
+else:
+    @register.assignment_tag
+    def get_home_quote():
+        return get_latest_quote()

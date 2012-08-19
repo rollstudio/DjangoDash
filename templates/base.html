@@ -46,10 +46,8 @@
             </ul>
           </nav>
           <div class="main_dixit">
-            {% get_latest_quote as latest %}
-            {% with latest as quote %}
-              {% include "quotes/quote.html" %}
-            {% endwith %}
+            {% get_home_quote as quote %}
+            {% include "quotes/quote.html" %}
           </div>
         </div>
       </div>

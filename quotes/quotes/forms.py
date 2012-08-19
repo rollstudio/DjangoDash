@@ -8,7 +8,7 @@ class QuoteForm(forms.ModelForm):
 
     class Meta:
         model = Quote
-        exclude = ('user', 'metadata', 'author')
+        exclude = ('user', 'metadata', 'author', 'star_count')
 
     def __init__(self, *args, **kwargs):
         super(QuoteForm, self).__init__(*args, **kwargs)
