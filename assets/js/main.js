@@ -48,24 +48,24 @@
         });
 
         var vote = $('.vote').each(function() {
-            var $$ = $(this);
+            var $vote = $(this);
 
-            var id = $$.data('id');
-            var token = $$.find('[name=csrfmiddlewaretoken]').val();
+            var id = $vote.data('id');
+            var token = $vote.find('[name=csrfmiddlewaretoken]').val();
 
-            var addLikeUrl = $$.data('add');
-            var deleteLikeUrl = $$.data('delete');
+            var addLikeUrl = $vote.data('add');
+            var deleteLikeUrl = $vote.data('delete');
 
-            $$.on('click', 'a:not(.disabled)', function(e) {
+            $vote.on('click', 'a:not(.disabled)', function(e) {
                 var $$ = $(this);
                 e.preventDefault();
 
                 var url = addLikeUrl;
-                if ($$.hasClass('liked')) {
+                if ($vote.hasClass('liked')) {
                     url = deleteLikeUrl;
                 }
 
-                $$.text('Liking...');
+                $$.text('Updating...');
 
                 $.ajax({
                     type: 'post',
@@ -77,13 +77,13 @@
                 }).success(function(data) {
                     var vote = 1;
 
-                    if ($$.hasClass('liked')) {
-                        $$.removeClass('liked');
-                        $$.text('liked');
+                    if ($vote.hasClass('liked')) {
+                        $vote.removeClass('liked');
+                        $$.text('like');
                         vote = -1;
                     } else {
-                        $$.addClass('liked');
-                        $$.text('like');
+                        $vote.addClass('liked');
+                        $$.text('liked');
                     }
 
                     var $votes = $('.quote[data-id='+ id +'] .votes').each(function() {
