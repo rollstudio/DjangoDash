@@ -94,7 +94,8 @@ div[role=main] > div{float:left;height:100%;position:relative;}
 #left_column .container{padding:40px;}
 #left_column .container nav{margin-top: 129px;
 margin-left: 229px;
-font-size: 12px;}
+font-size: 12px;position: relative;
+z-index: 100;}
 #left_column .container nav ul{list-style-type:none; font-weight:bold;}
 #left_column .container nav ul a{color:#000; text-decoration:none;
 -moz-transition: color 0.4s ease-in; /* Firefox 4 */
