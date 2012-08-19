@@ -53,9 +53,19 @@
             var id = $$.data('id');
             var token = $$.find('[name=csrfmiddlewaretoken]').val();
 
+            var addLikeUrl = $$.data('add');
+            var deleteLikeUrl = $$.data('delete');
+
             $$.on('click', 'a:not(.disabled)', function(e) {
                 var $$ = $(this);
                 e.preventDefault();
+
+                var url = addLikeUrl;
+                if ($$.hasClass('liked')) {
+                    url = deleteLikeUrl;
+                }
+
+                $$.text('Liking...');
 
                 $.ajax({
                     type: 'post',
@@ -63,17 +73,28 @@
                         id: id,
                         csrfmiddlewaretoken: token
                     },
-                    url: $$.attr('href')
+                    url: url
                 }).success(function(data) {
                     if (data !== 1) {
                         //already voted
                         return;
                     }
+                    var vote = 1;
+
+                    if ($$.hasClass('liked')) {
+                        $$.removeClass('liked');
+                        $$.text('liked');
+                        vote = -1;
+                    } else {
+                        $$.addClass('liked');
+                        $$.text('like');
+                    }
 
                     var $votes = $('.quote[data-id='+ id +'] .votes').each(function() {
                         var $$ = $(this);
-                        $$.text(parseInt($$.text(), 10) + 1);
+                        $$.text(parseInt($$.text(), 10) + vote);
                     });
+
                 }).fail(function(data) {
                     $$.text('Error!!1').addClass('disabled');
                 });
