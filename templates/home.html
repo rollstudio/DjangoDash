@@ -20,6 +20,17 @@
     <div class="container">
       <h3>LOGIN</h3>
       <div class="content">
+        PLEASE SIGN IN WITH ONE OF YOUR EXISTING THIRD PART ACCOUNTS. OR, SIGN UP FOR A ACCOUNT AND SIGN IN BELOW:
+        <ul class="signin_list">
+          <li><a href="{% url facebook_login %}" title="Sign in with Facebook">Facebook</a></li>
+          <li><a href="{% url twitter_login %}" title="Sign in with Twitter">Twitter</a></li>
+          <li><a href="{% url google_login %}" title="Sign in with Google +">Google +</a></li>
+        </ul>
+
+        <ul class="signup_list">
+          <li><a href="#" class="login" title="Sign in">Sign in</a></li>
+          <li><a href="#" class="register" title="Register">Register</a></li>
+        </ul>
         {% with login_form as form %}
           {% include "account/login_partial.html" %}
         {% endwith %}
