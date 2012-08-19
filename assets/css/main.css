@@ -211,8 +211,10 @@ padding: 0 6px;
 #right_column .prev_next a.next{ background:url('../img/prev_next_right.png') no-repeat 44px -17px}
 #right_column .prev_next a.next.disabled, #right_column .prev_next a.next:hover{  background:url('../img/prev_next_right.png') no-repeat -16px -17px;}
 
-#right_column .share{margin-top:20px;}
-#right_column .share a{float:left; margin-right:3px;color:#999; border:1px solid #999; padding:0px 20px 0px 1px; line-height:14px;text-decoration:none;font-weight:bold; background:url('../img/share.png') no-repeat right 0px; }
+#right_column .share{margin:20px 0; overflow: hidden;}
+#right_column .share a, #right_column .vote a{float:left; margin-right:3px;color:#999;
+    border:1px solid #999; padding:0px 20px 0px 1px; line-height:14px;
+    text-decoration:none;font-weight:bold; background:url('../img/share.png') no-repeat right 0px; }
 #right_column .share ul{list-style-type:none;}
 #right_column .share li{display:inline;}
 #right_column .share li a{float:left; display:block; width:15px; height:15px;font-size:1px; text-indent:-9999px;margin-right:3px; padding:0;border:none;}
@@ -222,6 +224,8 @@ padding: 0 6px;
 #right_column .share li a.share_tw:hover{background:#FE57A1 url('../img/social.png') no-repeat center top;}
 #right_column .share li a.share_gp{background:#999 url('../img/social.png') no-repeat right top;}
 #right_column .share li a.share_gp:hover{background:#FE57A1 url('../img/social.png') no-repeat right top;}
+#right_column .vote a { float: none; background:url('../img/heart_mini.png') no-repeat right 0px;}
+#right_column .vote a:hover { color: black; }
 
 #home #login .content > form { display: none; }
 
