@@ -8,6 +8,10 @@
 </div>
 
 <div class="vote" data-id="{{ pk }}">
-  <a href="{% url vote %}" title="vote">Vote</a>
-  {% csrf_token %}
+  {% if user.is_authenticated %}
+    <a href="{% url vote %}" title="like">Like</a>
+    {% csrf_token %}
+  {% else %}
+    <a href="{% url account_login %}" class="login disabled">Login to like</a>
+  {% endif %}
 </div>

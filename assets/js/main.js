@@ -47,13 +47,13 @@
             });
         });
 
-        $('.vote').each(function() {
+        var vote = $('.vote').each(function() {
             var $$ = $(this);
 
             var id = $$.data('id');
             var token = $$.find('[name=csrfmiddlewaretoken]').val();
 
-            $$.on('click', 'a', function(e) {
+            $$.on('click', 'a:not(.disabled)', function(e) {
                 var $$ = $(this);
                 e.preventDefault();
 
@@ -75,10 +75,17 @@
                         $$.text(parseInt($$.text(), 10) + 1);
                     });
                 }).fail(function(data) {
-                    console.log(data);
+                    $$.text('Error!!1').addClass('disabled');
                 });
             });
         });
+
+        if ($body.attr('id') === 'home') {
+            vote.on('click', 'a.login.disabled', function(e) {
+                e.preventDefault();
+                $('.write-your-dixit').trigger('click');
+            });
+        }
     }
 
     function setLogin() {
