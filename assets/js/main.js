@@ -186,10 +186,14 @@
                     lastId = $quote.data('id');
 
                     $wrapper.append($li);
+
+                    $column.find('.prev_next').removeClass('loading');
                 }).fail(function() {
                     if (current >= $wrapper.find('li .quote').length - 1) {
                         $next.addClass('disabled');
                     }
+
+                    $column.find('.prev_next').removeClass('loading');
                 });
             } else {
                 current -= 1;
@@ -204,8 +208,6 @@
                 } else {
                     $prev.removeClass('disabled');
                 }
-
-                $column.find('.prev_next').removeClass('loading');
             });
         });
     }
