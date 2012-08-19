@@ -41,11 +41,11 @@ def get_facebook_app_id():
     except SocialApp.DoesNotExist:
         return ''
 
-@register.simple_tag(takes_context=True)
+@register.assignment_tag(takes_context=True)
 def get_starred(context):
     try:
         UserStar.objects.get(user=context['user'], quote=context['quote'])
     except UserStar.DoesNotExist:
-        return "not-liked"
+        return False
     else:
-        return "liked"
+        return True
