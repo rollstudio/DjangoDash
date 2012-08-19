@@ -237,6 +237,11 @@ padding: 0 6px;
 #login-page #middle_column #wrapper li{ width:100%; }
 #login-page #right_column { display: none; }
 
+#signup-page #middle_column { width: 60%; }
+#signup-page #middle_column #wrapper{ width: 50%; }
+#signup-page #middle_column #wrapper li{ width:100%; }
+#signup-page #right_column { display: none; }
+
 
 .custom-select {
     position: relative;

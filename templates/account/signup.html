@@ -5,5 +5,11 @@
 {% block body-id %}signup-page{% endblock body-id %}
 
 {% block content_middle %}
-    {% include "account/register_partial.html" %}
+<ul id="wrapper">
+  <li id="login">
+    <div class="container">
+        {% include "account/register_partial.html" %}
+    </div>
+  </li>
+</ul>
 {% endblock content_middle %}
