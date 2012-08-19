@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf.urls import patterns, include, url
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 
 from allauth.account.forms import LoginForm, SignupForm
 
@@ -20,7 +20,7 @@ class HomeView(TemplateView):
         return context
 
 urlpatterns = patterns('',
-    # Examples:
+    url(r'^accounts/social/connections/$', RedirectView.as_view(url='/')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^$', HomeView.as_view()),
     url(r'^quotes/', include('quotes.quotes.urls')),
