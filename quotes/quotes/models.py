@@ -21,7 +21,7 @@ class Author(models.Model):
 
 class Quote(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
-    excerpt = models.CharField(max_length=255, blank=True)
+    excerpt = models.CharField(max_length=255, blank=True, editable=False)
     body = models.TextField()
 
     user = models.ForeignKey(User, related_name='quotes', blank=True, null=True)
