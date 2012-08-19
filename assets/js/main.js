@@ -126,5 +126,7 @@
         setLogin();
         setMiddleColumn();
         setNextPrev();
+
+        $('select').customSelect();
     });
 })(jQuery, window, document);
