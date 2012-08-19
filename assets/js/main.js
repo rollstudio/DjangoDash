@@ -53,7 +53,6 @@
             if ($$.attr('class') === 'next') {
                 current += 1;
 
-
                 ajaxPromise = $.ajax({
                     url: url,
                     type: 'get',
@@ -69,7 +68,9 @@
                     console.log(lastId);
                     $wrapper.append($li);
                 }).fail(function() {
-                    $next.addClass('disabled');
+                    if (current >= $wrapper.find('li .quote').length - 1) {
+                        $next.addClass('disabled');
+                    }
                 });
 
             } else {
