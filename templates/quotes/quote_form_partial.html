@@ -2,7 +2,7 @@
   <h3>YOUR ID</h3>
   <div class="content">
     SED VITAE EUISMOD NISI. PHASELLUS UT VELIT AC TURPIS SCELERISQUE FAUCIBUS.
-    <form id="form_your_id" method="POST" action="">
+    <form id="form_your_id" method="POST" action="{% url quote-add %}">
       {% csrf_token %}
       <fieldset>
         {{ form.as_p }}

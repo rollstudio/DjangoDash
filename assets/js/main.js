@@ -33,7 +33,7 @@
 
         var current = 0;
         var lastId = 0;
-        var url = window.nextQuoteUrl;
+        var url = window.prevQuoteUrl;
         var quotes = $column.find('.wrapper .quote');
 
         if (quotes.length < 2) {
@@ -65,10 +65,14 @@
                     var $quote = $(data).appendTo($li);
 
                     lastId = $quote.data('id');
+                    console.log(lastId);
                     $wrapper.append($li);
                 }).fail(function() {
-                    $next.addClass('disabled');
+                    if (current >= $wrapper.find('li .quote').length - 1) {
+                        $next.addClass('disabled');
+                    }
                 });
+
             } else {
                 current -= 1;
                 $next.removeClass('disabled');
