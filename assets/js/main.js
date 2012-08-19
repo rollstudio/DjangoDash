@@ -43,79 +43,70 @@
 
 
     function setSharing() {
-        $('.share').each(function() {
-            var $$ = $(this);
-            var url = $$.data('url');
-            var title = $$.data('title');
-            var description = $$.data('description');
+        $(document).on('click', '.share_buttons a', function(e) {
+            e.preventDefault();
 
-            $$.on('click', '.share_buttons a', function(e) {
-                e.preventDefault();
-                share($(this).attr('class'), url, title, description);
-            });
+            var $$ = $(this);
+            var $share = $$.parents('.share');
+
+            var url = $share.data('url');
+            var title = $share.data('title');
+            var description = $share.data('description');
+
+            share($$.attr('class'), url, title, description);
         });
 
-        var vote = $('.vote').each(function() {
-            var $vote = $(this);
+        $(document).on('click', '.vote a:not(.disabled)', function(e) {
+            e.preventDefault();
+            var $$ = $(this);
+            var $vote = $$.parents('.vote');
 
             var id = $vote.data('id');
             var token = $vote.find('[name=csrfmiddlewaretoken]').val();
 
             var addLikeUrl = $vote.data('add');
             var deleteLikeUrl = $vote.data('delete');
+            var url = addLikeUrl;
 
-            $vote.on('click', 'a:not(.disabled)', function(e) {
-                var $$ = $(this);
-                e.preventDefault();
+            if ($vote.hasClass('liked')) {
+                url = deleteLikeUrl;
+            }
 
-                var url = addLikeUrl;
+            $$.text('Updating...');
+
+            $.ajax({
+                type: 'post',
+                data: {
+                    id: id,
+                    csrfmiddlewaretoken: token
+                },
+                url: url
+            }).success(function(data) {
+                var vote = 1;
+
                 if ($vote.hasClass('liked')) {
-                    url = deleteLikeUrl;
+                    $vote.removeClass('liked');
+                    $$.text('vote');
+                    vote = -1;
+                } else {
+                    $vote.addClass('liked');
+                    $$.text('voted');
                 }
 
-                $$.text('Updating...');
-
-                $.ajax({
-                    type: 'post',
-                    data: {
-                        id: id,
-                        csrfmiddlewaretoken: token
-                    },
-                    url: url
-                }).success(function(data) {
-                    var vote = 1;
-
-                    if ($vote.hasClass('liked')) {
-                        $vote.removeClass('liked');
-                        $$.text('vote');
-                        vote = -1;
-                    } else {
-                        $vote.addClass('liked');
-                        $$.text('voted');
-                    }
-
-                    var $votes = $('.quote[data-id='+ id +'] .votes').each(function() {
-                        var $$ = $(this);
-                        $$.text(parseInt($$.text(), 10) + vote);
-                    });
-
-                }).fail(function(data) {
-                    $$.text('Error!!1').addClass('disabled');
+                var $votes = $('.quote[data-id='+ id +'] .votes').each(function() {
+                    var $$ = $(this);
+                    $$.text(parseInt($$.text(), 10) + vote);
                 });
+
+            }).fail(function(data) {
+                $$.text('Error!!1').addClass('disabled');
             });
         });
 
         if ($body.attr('id') === 'home') {
-            vote.on('click', 'a.login.disabled', function(e) {
+            $(document).on('click', 'a.login.disabled', function(e) {
                 e.preventDefault();
                 $('.write-your-dixit').trigger('click');
-                var $c = $('#right_column').addClass('mini');
-
-                window.setTimeout(function() {
-                    $c.on('mouseout mouseover', function() {
-                        $(this).off().removeClass('mini');
-                    });
-                }, 200);
             });
         }
     }
