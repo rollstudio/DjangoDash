@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import pre_save, post_save, post_delete
 from django.contrib.sites.models import Site
 
 from taggit.managers import TaggableManager
@@ -21,6 +21,7 @@ class Author(models.Model):
 
 class Quote(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
+    excerpt = models.CharField(max_length=255, blank=True)
     body = models.TextField()
 
     user = models.ForeignKey(User, related_name='quotes', blank=True, null=True)
@@ -49,6 +50,9 @@ class Quote(models.Model):
             return self.title
         else:
             return self.body[:50]
+
+    def get_excerpt(self):
+        return self.excerpt if self.excerpt else self.body[:255]
 
 
 class UserStar(models.Model):
@@ -85,6 +89,15 @@ def quote_post_save(sender, instance, created, *args, **kwargs):
         pass
 
 #post_save.connect(quote_post_save, sender=Quote)
+
+def quote_pre_save(sender, instance, raw, using, **kwargs):
+    chunks = instance.body.split('---', 1)
+    if len(chunks) > 1:
+        instance.excerpt = chunks[0][:255]
+        instance.body = ''.join(chunks)
+
+pre_save.connect(quote_pre_save, sender=Quote)
+
 
 def star_post_save(sender, instance, created, *args, **kwargs):
     if created:
