@@ -39,11 +39,13 @@
       <div id="left_column">
         <div class="container">
             <nav>
+            {% block top-nav %}
             <ul>
                 <li><a href="/" title="About the project" class="about-the-project active">About the project</a></li>
                 <li><a href="{% url quote-add %}" title="Write your dixit" class="write-your-dixit">Write your dixit</a></li>
             </ul>
-          </nav>
+           {% endblock top-nav %}
+            </nav>
           {% block main-quote %}
           <div class="main_dixit">
             {% get_home_quote as quote %}
