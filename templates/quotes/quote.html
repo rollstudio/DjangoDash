@@ -1,6 +1,6 @@
 <h3>ID {{quote.pk}}</h3>
 <div class="dixit_text">
-  {{ quote.body }}
+  {{ quote.body|linebreaks }}
 </div>
 <div class="dixit_details">
     <p><strong>BY:</strong> {{ quote.author|default:"Anonymous" }}</p>
