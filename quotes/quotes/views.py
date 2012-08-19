@@ -1,13 +1,14 @@
 from django.core import serializers
 from django.http import HttpResponse, Http404
 from django.db.models import ObjectDoesNotExist
+from django.views.generic.base import View
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import BaseListView
 
 from braces.views import LoginRequiredMixin
 
-from .models import Quote, Author
+from .models import Quote, Author, UserStar
 from .forms import QuoteForm
 
 
@@ -72,3 +73,26 @@ class GetQuote(DetailView):
             raise Http404
 
         return obj
+
+def addstar(request):
+    try:
+        id = int(request.GET['id'])
+    except (KeyError, ValueError):
+        raise Http404
+
+    if not request.user.is_authenticated():
+        return HttpResponse("2", status=403,
+                            content_type='application/json')
+
+    try:
+        quote = Quote.objects.get(id=id)
+    except Quote.DoesNotExist:
+        raise Http404
+
+    try:
+        UserStar.objects.create(user=request.user, quote=quote)
+    except: # IntegrityError
+        raise
+        #return HttpResponse("0", content_type='application/json')
+    else:
+        return HttpResponse("1", content_type='application/json')
