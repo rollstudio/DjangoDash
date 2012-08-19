@@ -47,7 +47,9 @@
           {% block main-quote %}
           <div class="main_dixit">
             {% get_home_quote as quote %}
+            {% with is_left_column=1 %}
             {% include "quotes/quote.html" %}
+            {% endwith %}
           </div>
           {% endblock main-quote %}
         </div>
