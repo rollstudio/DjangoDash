@@ -46,3 +46,28 @@ class GetQuotes(BaseListView):
     def render_to_response(self, context):
         content = serializers.serialize("json", context['object_list'])
         return HttpResponse(content, content_type='application/json')
+
+class GetQuote(DetailView):
+
+    order = None
+    query = None
+    queryset = Quote.objects.all()
+    pk_url_kwarg = 'id'
+    template_name = 'quotes/quote.html'
+
+    def get_object(self, queryset=None):
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        try:
+            pk = self.request.GET[self.pk_url_kwarg]
+        except KeyError:
+            raise AttributeError("GetQuote must be called with an object pk.")
+
+        try:
+            obj = queryset.filter(**{self.query: pk}).order_by(self.order)[0]
+        except ObjectDoesNotExist:
+            raise Http404
+
+        return obj
+

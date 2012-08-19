@@ -1,19 +1,21 @@
-{% if quote.title %}
-<h3>{{quote.title}}</h3>
-{% endif %}
-<div class="dixit_text">
-  {{ quote.body|linebreaks }}
-</div>
-<div class="dixit_details">
-    <p><strong>BY:</strong> {{ quote.author|default:"Anonymous" }}</p>
-    {% if quote.source %}<p><strong>SOURCE:</strong> <a href="{{ quote.source }}">{{ quote.source }}</a></p>{% endif %}
-    <p><strong>TAG:</strong> {{ quote.tags.all|join:',' }}</p>
-</div>
-<div class="share">
-    <a href="#" title="share">Share</a>
-    <ul class="share_buttons">
-        <li><a href="#" class="share_fb">Facebook</a></li>
-        <li><a href="#" class="share_tw">Twitter</a></li>
-        <li><a href="#" class="share_gp">GooglePlus</a></li>
-    </ul>
+<div class="quote" data-id="{{ quote.id }}">
+  {% if quote.title %}
+  <h3>{{quote.title}}</h3>
+  {% endif %}
+  <div class="dixit_text">
+    {{ quote.body|linebreaks }}
+  </div>
+  <div class="dixit_details">
+      <p><strong>BY:</strong> {{ quote.author|default:"Anonymous" }}</p>
+      {% if quote.source %}<p><strong>SOURCE:</strong> <a href="{{ quote.source }}">{{ quote.source }}</a></p>{% endif %}
+      <p><strong>TAG:</strong> {{ quote.tags.all|join:',' }}</p>
+  </div>
+  <div class="share">
+      <a href="#" title="share">Share</a>
+      <ul class="share_buttons">
+          <li><a href="#" class="share_fb">Facebook</a></li>
+          <li><a href="#" class="share_tw">Twitter</a></li>
+          <li><a href="#" class="share_gp">GooglePlus</a></li>
+      </ul>
+  </div>
 </div>
