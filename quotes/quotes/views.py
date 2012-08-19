@@ -30,6 +30,11 @@ class QuoteCreate(LoginRequiredMixin, CreateView):
 
 
 class GetQuotes(BaseListView):
+    """
+    JSON view used to get one or more quotes newer or older than a given Quote.
+    Setting order to "id" and query to "id__gt" it will return the first N
+    Quotes with id greater than the current Quote.
+    """
     limit = 5
     order = None
     query = None
@@ -50,6 +55,10 @@ class GetQuotes(BaseListView):
 
 
 class GetQuote(DetailView):
+    """
+    Used to get the "prev" and "next" Quote as HTML for the navigation in the
+    right column.
+    """
 
     order = None
     query = None
@@ -75,6 +84,10 @@ class GetQuote(DetailView):
 
 
 def manage_star(request, add=True):
+    """
+    Manage the stars of the current user. If add is True it will star the Quote
+    referenced by "id", otherwise it will "unstar" it.
+    """
     try:
         id = int(request.REQUEST['id'])
     except (KeyError, ValueError):
