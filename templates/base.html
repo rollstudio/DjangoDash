@@ -32,7 +32,9 @@
     <header>
         <hgroup>
         <h1><a href="/" title="Ipse dixit"><span>Ipse</span><br /><span>dixit</span></a></h1>
-        <h2>{{ tagline.content|linebreaks }}</h2>
+        <h2>
+            {{ tagline.content|linebreaks }}
+            <p class="author">{{ tagline.description }}</p></h2>
       </hgroup>
     </header>
     <div role="main" class="clearfix">
