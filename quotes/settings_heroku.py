@@ -20,12 +20,12 @@ EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD', '')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-DATABASES = postgresify()
+#DATABASES = postgresify()
 
 STATIC_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_URL = STATIC_URL + 'media/'
 
-COMPRESS_ENABLED = DEBUG is False
+COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS += (
     'compressor.finders.CompressorFinder',
@@ -34,7 +34,7 @@ STATICFILES_FINDERS += (
 if COMPRESS_ENABLED:
     COMPRESS_STORAGE = 'quotes.utils.CachedS3BotoStorage'
     COMPRESS_URL = STATIC_URL
-    COMPRESS_OFFLINE = True
+    #COMPRESS_OFFLINE = True
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
