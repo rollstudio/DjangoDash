@@ -124,12 +124,13 @@ transition: color 0.4s ease-in;}
 #middle_column #about .view {position:absolute; bottom: 80px;left:20px;}
 #middle_column #about .view a{text-decoration:none;color:#FF3399; font-weiht:bold; font-size:25px; letter-spacing:-2px;}
 #middle_column .signin_list{width:100%;list-style-type:none;margin-top:20px;}
-#middle_column .signin_list li{margin:0 0 4px 0;width:auto!important;}
-#middle_column .signin_list li a{padding:0 1px; line-height:12px; border:1px solid #000; color:#000; text-decoration:none;font-weight:bold;}
+#middle_column .signin_list li{margin:0 0 4px 0;width:auto!important; float: none!important; display: block;}
+#middle_column .signin_list li a{padding:0 1px; line-height:12px; border:1px solid #000; color:#000;
+    text-decoration:none;font-weight:bold; }
 #middle_column .signin_list li a:hover{border:1px solid #666; color:#666;}
 
 #middle_column .signup_list{width:100%;list-style-type:none;margin-top:20px;}
-#middle_column .signup_list li{margin:0 0 4px 0;width:auto!important;}
+#middle_column .signup_list li{margin:0 0 4px 0;width:auto!important; float: none!important; display: block;}
 #middle_column .signup_list li a{padding:0 1px; line-height:12px; border:1px solid #666; color:#666; text-decoration:none;font-weight:bold;}
 #middle_column .signup_list li a:hover{border:1px solid #666; color:#666;}
 
