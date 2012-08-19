@@ -27,6 +27,10 @@ MEDIA_URL = STATIC_URL + 'media/'
 
 COMPRESS_ENABLED = DEBUG is False
 
+STATICFILES_FINDERS += (
+    'compressor.finders.CompressorFinder',
+)
+
 if COMPRESS_ENABLED:
     COMPRESS_CSS_FILTERS = [
         'compressor.filters.css_default.CssAbsoluteFilter',
