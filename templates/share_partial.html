@@ -1,3 +1,4 @@
+{% load quotes_utils %}
 <div class="share" data-url="{{ url }}" data-description="{{ description }}">
   <a href="{{ url }}" title="share">Share</a>
   <ul class="share_buttons">
@@ -7,11 +8,12 @@
   </ul>
 </div>
 
+{% if user.is_authenticated %}
+<div class="vote" data-id="{{ pk }}" data-starred="{% get_starred %}">
+  <a href="{% url vote %}" title="like">Like</a>
+  {% csrf_token %}
+{% else %}
 <div class="vote" data-id="{{ pk }}">
-  {% if user.is_authenticated %}
-    <a href="{% url vote %}" title="like">Like</a>
-    {% csrf_token %}
-  {% else %}
-    <a href="{% url account_login %}" class="login disabled">Login to like</a>
-  {% endif %}
+  <a href="{% url account_login %}" class="login disabled">Login to like</a>
+{% endif %}
 </div>

@@ -1,6 +1,6 @@
 from django import template
 from django.conf import settings
-from quotes.quotes.models import Quote
+from quotes.quotes.models import Quote, UserStar
 
 register = template.Library()
 
@@ -40,3 +40,12 @@ def get_facebook_app_id():
         return SocialApp.objects.get(name='Facebook').key
     except SocialApp.DoesNotExist:
         return ''
+
+@register.simple_tag(takes_context=True)
+def get_starred(context):
+    try:
+        UserStar.objects.get(user=context['user'], quote=context['quote'])
+    except UserStar.DoesNotExist:
+        return "false"
+    else:
+        return "true"
