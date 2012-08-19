@@ -215,11 +215,11 @@ padding: 0 6px;
 #right_column .share li{display:inline;}
 #right_column .share li a{float:left; display:block; width:15px; height:15px;font-size:1px; text-indent:-9999px;margin-right:3px; padding:0;border:none;}
 #right_column .share li a.share_fb{background:#999 url('../img/social.png') no-repeat left top;}
-#right_column .share li a.share_fb:hover{background:#CCC url('../img/social.png') no-repeat left top;}
+#right_column .share li a.share_fb:hover{background:#FE57A1 url('../img/social.png') no-repeat left top;}
 #right_column .share li a.share_tw{background:#999 url('../img/social.png') no-repeat center top;}
-#right_column .share li a.share_tw:hover{background:#CCC url('../img/social.png') no-repeat center top;}
+#right_column .share li a.share_tw:hover{background:#FE57A1 url('../img/social.png') no-repeat center top;}
 #right_column .share li a.share_gp{background:#999 url('../img/social.png') no-repeat right top;}
-#right_column .share li a.share_gp:hover{background:#CCC url('../img/social.png') no-repeat right top;}
+#right_column .share li a.share_gp:hover{background:#FE57A1 url('../img/social.png') no-repeat right top;}
 
 #home #login .content > form { display: none; }
 
