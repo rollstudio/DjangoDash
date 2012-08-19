@@ -105,7 +105,7 @@ transition: color 0.4s ease-in;}
 #left_column .container nav ul a:hover{color:#FF3399;}
 #left_column .container nav ul a.current{color:#FF3399;}
 #left_column .main_dixit{position:absolute; bottom:40px; margin-top:150px;width:60%;min-width:432px;/*border-left: 1px solid #000;padding-left: 20px;*/}
-#left_column .main_dixit h3{font-size: 70px; line-height: 1;}
+#left_column .main_dixit h3{font-size: 70px; line-height: 1;letter-spacing:-9px;}
 #left_column .main_dixit h3 a { text-decoration: none; color: black; }
 #left_column .main_dixit h3 a:visited { text-decoration: none; color: black; }
 #left_column .main_dixit h4 {font-size: 25px;letter-spacing: -1px;text-decoration: none;color: #FF3399;}
