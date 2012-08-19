@@ -1,6 +1,39 @@
 (function($, window, document) {
     var $body;
 
+    function shareOnFacebook(url, title, text, image) {
+        var data = {
+            app_id: window.appId,
+            link: url,
+            name: title,
+            description: text
+        };
+
+        FB.ui('feed', data);
+    }
+
+    function share(type, url) {
+        var data = {
+            url: url,
+            text: 'Check this quote!'
+        };
+
+        switch (type) {
+            case 'facebook':
+                shareOnFacebook(url, title, text);
+                return;
+            case 'twitter':
+                url = 'https://twitter.com/intent/tweet?' + $.param(data);
+            break;
+            case 'google':
+                url = 'https://plus.google.com/share?' + $.param(data);
+            break;
+        }
+
+        window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+    }
+
+
     function setLogin() {
         var $form_signin = $('#form_signin');
         var $form_register = $('#form_register');

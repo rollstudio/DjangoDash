@@ -72,5 +72,22 @@
     <script src="{{ STATIC_URL }}js/jquery.customSelect.js"></script>
     <script src="{{ STATIC_URL }}js/main.js"></script>
 
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: '{% get_facebook_app_id %}',
+          status: true,
+          cookie: true
+        });
+      };
+
+      (function(d){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         ref.parentNode.insertBefore(js, ref);
+       }(document));
+    </script>
 </body>
 </html>
