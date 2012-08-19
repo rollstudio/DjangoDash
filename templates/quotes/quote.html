@@ -1,6 +1,6 @@
 <div class="quote" data-id="{{ quote.id }}">
   {% if quote.title %}
-  <h3>{{quote.title}}</h3>
+  <h3><a href="{{ quote.get_absolute_url }}" title="{{quote.title}}">{{ quote.title }}</a></h3>
   {% endif %}
   <div class="dixit_text">
     {{ quote.body|linebreaks }}
