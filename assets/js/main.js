@@ -162,50 +162,54 @@
             lastId = quotes.eq(quotes.length - 1).data('id');
         }
 
+        var prevNext = $column.find('.prev_next');
+
         $column.on('click', '.prev_next:not(.loading) a:not(.disabled)', function(e) {
             e.preventDefault();
 
             var $$ = $(this);
 
-            var ajaxPromise;
+            prevNext.fadeOut('fast', function() {
+                var ajaxPromise;
 
-            if ($$.attr('class') === 'next') {
-                current += 1;
-                $column.find('.prev_next').addClass('loading');
-                ajaxPromise = $.ajax({
-                    url: url,
-                    type: 'get',
-                    data: {
-                        id: lastId,
-                        limit: 1
-                    }
-                }).success(function(data) {
-                    var $li = $('<li />');
-                    var $quote = $(data).appendTo($li);
+                if ($$.attr('class') === 'next') {
+                    current += 1;
+                    $column.find('.prev_next').addClass('loading');
+                    ajaxPromise = $.ajax({
+                        url: url,
+                        type: 'get',
+                        data: {
+                            id: lastId,
+                            limit: 1
+                        }
+                    }).success(function(data) {
+                        var $li = $('<li />');
+                        var $quote = $(data).appendTo($li);
 
-                    lastId = $quote.data('id');
+                        lastId = $quote.data('id');
 
-                    $wrapper.append($li);
-                }).fail(function() {
-                    if (current >= $wrapper.find('li .quote').length - 1) {
-                        $next.addClass('disabled');
-                    }
-                }).done(function() {
-                    $column.find('.prev_next').removeClass('loading');
-                });
-            } else {
-                current -= 1;
-                $next.removeClass('disabled');
-            }
-
-            $.when(ajaxPromise, $column.animate({
-                scrollTop: $column.height() * current
-            }, 500)).done(function() {
-                if (current === 0) {
-                    $prev.addClass('disabled');
+                        $wrapper.append($li);
+                    }).fail(function() {
+                        if (current >= $wrapper.find('li .quote').length - 1) {
+                            $next.addClass('disabled');
+                        }
+                    });
                 } else {
-                    $prev.removeClass('disabled');
+                    current -= 1;
+                    $next.removeClass('disabled');
                 }
+
+                $.when(ajaxPromise, $column.animate({
+                    scrollTop: $column.height() * current
+                }, 500)).always(function() {
+                    if (current === 0) {
+                        $prev.addClass('disabled');
+                    } else {
+                        $prev.removeClass('disabled');
+                    }
+
+                    prevNext.fadeIn('fast').removeClass('loading');
+                });
             });
         });
     }
@@ -288,6 +292,17 @@
         });
     }
 
+    function animateLogo(from, to) {
+        from = from || '#000';
+        to = to || '#fe57a1';
+
+        var logo = $('header h1 a').animate({
+            color: to
+        }, 4000, function() {
+            animateLogo(to, from);
+        });
+    }
+
     $(function() {
         $body = $('body');
         setLogin();
@@ -298,5 +313,6 @@
 
         $('select').customSelect();
         $("#right_column .dixit_text").nanoScroller();
+        animateLogo();
     });
 })(jQuery, window, document);
