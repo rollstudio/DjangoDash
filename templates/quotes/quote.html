@@ -3,12 +3,14 @@
   {% if quote.title %}
   <h4><a href="{{ quote.get_absolute_url }}" title="{{quote.title}}">{{ quote.title }}</a></h3>
   {% endif %}
-  <div class="dixit_text">
-    {% if is_left_column %}
-    {{ quote.get_excerpt|linebreaks }}
-    {% else %}
-    {{ quote.body|linebreaks }}
-    {% endif %}
+  <div class="nano dixit_text">
+    <div class="content">
+      {% if is_left_column %}
+      {{ quote.get_excerpt|linebreaks }}
+      {% else %}
+      {{ quote.body|linebreaks }}
+      {% endif %}
+    </div>
   </div>
   <div class="dixit_details">
       <p><strong>BY:</strong> {{ quote.author|default:"Anonymous" }}</p>
