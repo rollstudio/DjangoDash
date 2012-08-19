@@ -92,7 +92,6 @@ def addstar(request):
     try:
         UserStar.objects.create(user=request.user, quote=quote)
     except:  # IntegrityError
-        raise
-        #return HttpResponse("0", content_type='application/json')
+        return HttpResponse("0", content_type='application/json')
     else:
         return HttpResponse("1", content_type='application/json')
