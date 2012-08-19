@@ -2,8 +2,6 @@ from django.contrib import admin
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
-from braces.views import LoginRequiredMixin
-
 from allauth.account.forms import LoginForm, SignupForm
 from quotes.views import GetQuotes
 
@@ -27,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('allauth.urls')),
     url(r'^$', HomeView.as_view()),
     url(r'^quotes/', include('quotes.quotes.urls')),
-    url(r'^quotes/next$', GetQuotes.as_view(order='id', query='id__gt')),
+    url(r'^quotes/next$', GetQuotes.as_view(order='id', query='id__gt'), name='get-next-quote'),
     url(r'^quotes/prev$', GetQuotes.as_view(order='-id', query='id__lt')),
     #url(r'^show/(?P<object_id>\d+)$',
     #    'django.views.generic.list_detail.object_detail',

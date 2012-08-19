@@ -1,4 +1,6 @@
 (function($, window, document) {
+    var $body;
+
     function setLogin() {
         var $form_signin = $('#form_signin');
         var $form_register = $('#form_register');
@@ -16,6 +18,64 @@
                     $form_register.fadeIn('fast');
                 });
             }
+        });
+    }
+
+    function setNextPrev() {
+        if ($body.attr('id') !== 'home') {
+            return;
+        }
+
+        var $column = $('#right_column');
+        var $prev = $column.find('.prev');
+        var $next = $column.find('.next');
+
+        var current = 0;
+        var lastId = window.lastQuoteId;
+        var url = window.nextQuoteUrl;
+
+        if ($column.find('.wrapper li').length === 0) {
+            $column.find('.prev_next a').addClass('disabled');
+            return;
+        }
+
+        $column.on('click', '.prev_next a:not(.disabled)', function(e) {
+            e.preventDefault();
+
+            var $$ = $(this);
+
+            var ajaxPromise;
+
+            if ($$.attr('class') === 'next') {
+                current += 1;
+
+                ajaxPromise = $.ajax({
+                    url: url,
+                    type: 'get',
+                    data: {
+                        id: lastId,
+                        limit: 1
+                    }
+                }).success(function(data) {
+                    if (data.length > 0) {
+                        lastId = data[0].pk;
+                    } else {
+                        $next.addClass('disabled');
+                    }
+                });
+            } else {
+                current -= 1;
+            }
+
+            $.when(ajaxPromise, $column.animate({
+                scrollTop: $column.height() * current
+            }, 500)).done(function() {
+                if (current === 0) {
+                    $prev.addClass('disabled');
+                } else {
+                    $prev.removeClass('disabled');
+                }
+            });
         });
     }
 
@@ -51,7 +111,9 @@
     }
 
     $(function() {
+        $body = $('body');
         setLogin();
         setMiddleColumn();
+        setNextPrev();
     });
 })(jQuery, window, document);
