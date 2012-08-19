@@ -65,10 +65,15 @@
                     },
                     url: $$.attr('href')
                 }).success(function(data) {
-                    var votes = $('.quote[data-id='+ id +'] .votes');
+                    if (data !== 1) {
+                        //already voted
+                        return;
+                    }
 
-                    votes.text(parseInt(votes.text(), 10) + 1);
-                    console.log(data);
+                    var $votes = $('.quote[data-id='+ id +'] .votes').each(function() {
+                        var $$ = $(this);
+                        $$.text(parseInt($$.text(), 10) + 1);
+                    });
                 }).fail(function(data) {
                     console.log(data);
                 });
