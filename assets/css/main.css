@@ -122,13 +122,16 @@ nav ul.single {position: relative; top: 17px;}
 /*.dixit_details a:hover { color: #00E; }*/
 .dixit_text{ font-size:22px;margin-bottom:40px;line-height:22px;}
 
+.quote .content { text-transform: none; }
+
 #middle_column .container, #right_column .quote{padding:20px;}
 #right_column .quote{height:100%;}
 #middle_column{width:30%; background:/*#FBFBFB*/ rgba(251,251,251,0.8);overflow:hidden;}
 #middle_column ul#wrapper{list-style-type:none; width:400%;height:100%; }
 #middle_column ul#wrapper li{width:25%;height:100%; float:left;}
 #middle_column ul#wrapper h3{font-size:40px; margin-top:12px;line-height:40px;margin-bottom:20px;}
-#middle_column #about{float:left;position:relative;font-size:11px;}
+#middle_column #about{float:left;position:relative;font-size:14px;}
+#middle_column #about .content{text-transform: none;}
 #middle_column #about .view {position:absolute; bottom: 80px;left:20px;}
 #middle_column #about .view a{text-decoration:none;color:#FF3399; font-weiht:bold; font-size:25px; letter-spacing:-2px;}
 #middle_column .signin_list{width:100%;list-style-type:none;margin-top:20px;}
