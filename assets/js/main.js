@@ -46,6 +46,34 @@
                 share($(this).attr('class'), url, description);
             });
         });
+
+        $('.vote').each(function() {
+            var $$ = $(this);
+
+            var id = $$.data('id');
+            var token = $$.find('[name=csrfmiddlewaretoken]').val();
+
+            $$.on('click', 'a', function(e) {
+                var $$ = $(this);
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'post',
+                    data: {
+                        id: id,
+                        csrfmiddlewaretoken: token
+                    },
+                    url: $$.attr('href')
+                }).success(function(data) {
+                    var votes = $('.quote[data-id='+ id +'] .votes');
+
+                    votes.text(parseInt(votes.text(), 10) + 1);
+                    console.log(data);
+                }).fail(function(data) {
+                    console.log(data);
+                });
+            });
+        });
     }
 
     function setLogin() {

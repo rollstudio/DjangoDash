@@ -8,5 +8,6 @@
 </div>
 
 <div class="vote" data-id="{{ pk }}">
-  <a href="{# url vote #}" title="vote">Vote</a>
+  <a href="{% url vote %}" title="vote">Vote</a>
+  {% csrf_token %}
 </div>

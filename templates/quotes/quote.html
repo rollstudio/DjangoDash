@@ -11,7 +11,7 @@
       <p><strong>SOURCE:</strong> <a href="{{ quote.source }}">{{ quote.source|truncatechars:40 }}</a></p>
       {% endif %}
       <p><strong>TAG:</strong> {{ quote.tags.all|join:', ' }}</p>
-      <p><strong>VOTES:</strong> {{ quote.star_count }}</p>
+      <p><strong>VOTES:</strong> <span class="votes">{{ quote.star_count }}</span></p>
   </div>
   {% with url=quote.get_full_url description=quote.body pk=quote.pk %}
     {% include "share_partial.html" %}

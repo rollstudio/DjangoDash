@@ -8,5 +8,5 @@ urlpatterns = patterns('',
     url(r'^view/(?P<pk>\d+)/$', QuoteDetail.as_view(), name='quote-detail'),
     url(r'^next/$', GetQuote.as_view(order='id', query='id__gt'), name='get-next-quote'),
     url(r'^prev/$', GetQuote.as_view(order='-id', query='id__lt'), name='get-prev-quote'),
-    url(r'^star/$', addstar),
+    url(r'^star/$', addstar, name="vote"),
 )

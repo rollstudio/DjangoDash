@@ -1,7 +1,6 @@
 from django.core import serializers
 from django.http import HttpResponse, Http404
 from django.db.models import ObjectDoesNotExist
-from django.views.generic.base import View
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import BaseListView
@@ -74,9 +73,10 @@ class GetQuote(DetailView):
 
         return obj
 
+
 def addstar(request):
     try:
-        id = int(request.GET['id'])
+        id = int(request.POST['id'])
     except (KeyError, ValueError):
         raise Http404
 
@@ -91,7 +91,7 @@ def addstar(request):
 
     try:
         UserStar.objects.create(user=request.user, quote=quote)
-    except: # IntegrityError
+    except:  # IntegrityError
         raise
         #return HttpResponse("0", content_type='application/json')
     else:
