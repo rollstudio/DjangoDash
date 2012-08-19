@@ -74,11 +74,11 @@ class GetQuote(DetailView):
         return obj
 
 
-def addstar(request):
+def manage_star(request, add=True):
     try:
-        id = int(request.POST['id'])
+        id = int(request.REQUEST['id'])
     except (KeyError, ValueError):
-        raise Http404
+        raise Http404("Invalid id")
 
     if not request.user.is_authenticated():
         return HttpResponse("2", status=403,
@@ -87,10 +87,13 @@ def addstar(request):
     try:
         quote = Quote.objects.get(id=id)
     except Quote.DoesNotExist:
-        raise Http404
+        raise Http404("Quote object not found")
 
     try:
-        UserStar.objects.create(user=request.user, quote=quote)
+        if add:
+            UserStar.objects.create(user=request.user, quote=quote)
+        else:
+            UserStar.objects.get(user=request.user, quote=quote).delete()
     except:  # IntegrityError
         return HttpResponse("0", content_type='application/json')
     else:

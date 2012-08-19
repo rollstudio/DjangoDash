@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from .views import QuoteCreate, QuoteDetail, GetQuote, addstar
+from .views import QuoteCreate, QuoteDetail, GetQuote, manage_star
 
 
 urlpatterns = patterns('',
@@ -8,5 +8,6 @@ urlpatterns = patterns('',
     url(r'^view/(?P<pk>\d+)/$', QuoteDetail.as_view(), name='quote-detail'),
     url(r'^next/$', GetQuote.as_view(order='id', query='id__gt'), name='get-next-quote'),
     url(r'^prev/$', GetQuote.as_view(order='-id', query='id__lt'), name='get-prev-quote'),
-    url(r'^star/$', addstar, name="vote"),
+    url(r'^star/add/$', manage_star, {'add': True}, name="add_star"),
+    url(r'^star/delete/$', manage_star, {'add': False}, name="delete_star"),
 )
