@@ -164,6 +164,10 @@
 
         var prevNext = $column.find('.prev_next');
 
+        $(window).resize(function() {
+            $column.scrollTop($column.height() * current);
+        });
+
         $column.on('click', '.prev_next:not(.loading) a:not(.disabled)', function(e) {
             e.preventDefault();
 
@@ -189,6 +193,7 @@
                         lastId = $quote.data('id');
 
                         $wrapper.append($li);
+                        setScroller();
                     }).fail(function() {
                         if (current >= $wrapper.find('li .quote').length - 1) {
                             $next.addClass('disabled');
@@ -223,6 +228,8 @@
         var $prev = $column.find('.prev');
         var $next = $column.find('.next');
 
+        var left = 0;
+
         var $writeLink = $('.write-your-dixit').on('click', function(e) {
             e.preventDefault();
             $next.trigger('click');
@@ -233,7 +240,15 @@
             $prev.trigger('click');
         });
 
+
+        $(window).resize(function() {
+            var l = (left === 0) ? 0 : $column.width();
+            $column.scrollLeft(l);
+        });
+
+
         $next.on('click', function(e) {
+            left = 1;
             e.preventDefault();
             $column.animate({
                 scrollLeft: $column.width()
@@ -247,6 +262,7 @@
         });
 
         $prev.on('click', function(e) {
+            left = 0;
             e.preventDefault();
             $column.animate({
                 scrollLeft: 0
@@ -303,6 +319,22 @@
         });
     }
 
+    function setScroller() {
+        var $panels = $("#right_column .dixit_text").nanoScroller();
+
+        $panels.each(function() {
+            var $$ = $(this);
+            var $p = $$.find('.content > p');
+
+            var h = $$.height();
+            var ph = $p.outerHeight(true);
+
+            if (h > ph) {
+                $$.height(ph);
+            }
+        });
+    }
+
     $(function() {
         $body = $('body');
         setLogin();
@@ -312,7 +344,12 @@
         setKeyboardNavigation();
 
         $('select').customSelect();
-        $("#right_column .dixit_text").nanoScroller();
+
+        setScroller();
         animateLogo();
+
+        $(window).resize(function() {
+            setScroller();
+        });
     });
 })(jQuery, window, document);
