@@ -79,11 +79,11 @@
 
                     if ($vote.hasClass('liked')) {
                         $vote.removeClass('liked');
-                        $$.text('like');
+                        $$.text('vote');
                         vote = -1;
                     } else {
                         $vote.addClass('liked');
-                        $$.text('liked');
+                        $$.text('voted');
                     }
 
                     var $votes = $('.quote[data-id='+ id +'] .votes').each(function() {

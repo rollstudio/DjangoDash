@@ -11,10 +11,10 @@
 {% if user.is_authenticated %}
 {% get_starred as liked %}
 <div class="vote {% if not liked %}not-{% endif %}liked" data-id="{{ pk }}" data-add="{% url add-like %}" data-delete="{% url delete-like %}">
-  <a href="#" title="like">Like{% if liked %}d{% endif %}</a>
+  <a href="#">Vote{% if liked %}d{% endif %}</a>
   {% csrf_token %}
 {% else %}
 <div class="vote" data-id="{{ pk }}">
-  <a href="{% url account_login %}" class="login disabled">Login to like</a>
+  <a href="{% url account_login %}" class="login disabled">Login to vote</a>
 {% endif %}
 </div>
