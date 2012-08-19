@@ -62,10 +62,10 @@
 {% block right-column %}
   <ul class="wrapper" style="height:100%">
     <li>
-      {% get_last_quote_by_index 1 as quote %}
+      {% get_last_quote_by_index 0 as quote %}
       {% include "quotes/quote.html" %}
     </li>
-    {% get_last_quote_by_index 2 as quote %}
+    {% get_last_quote_by_index 1 as quote %}
 
     {% if quote %}
     <li>
