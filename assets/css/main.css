@@ -90,7 +90,7 @@ margin-left: 267px;
 line-height: 15px;width:210px;letter-spacing:0;}
 div[role=main]{height:100%;}
 div[role=main] > div{float:left;height:100%;position:relative;}
-#left_column{width:40%;min-width:432px;}
+#left_column{width:40%;min-width:432px; background:url(../img/bg_img.png) no-repeat center center; background-size:cover;}
 #left_column .container{padding:40px;}
 #left_column .container nav{margin-top: 129px;
 margin-left: 229px;
@@ -108,7 +108,7 @@ transition: color 0.4s ease-in;}
 #left_column .main_dixit h3{font-size: 70px; line-height: 1;letter-spacing:-9px;}
 #left_column .main_dixit h3 a { text-decoration: none; color: black; }
 #left_column .main_dixit h3 a:visited { text-decoration: none; color: black; }
-#left_column .main_dixit h4 {font-size: 25px;letter-spacing: -1px;text-decoration: none;color: #FF3399;}
+#left_column .main_dixit h4 a{font-size: 25px;letter-spacing: -1px;text-decoration: none;color: #FF3399;}
 #left_column .dixit_details{color:#666; font-size: 14px;width:60%;min-width:432px;}
 
 .dixit_details{color:#666;min-width:216px;}
@@ -214,6 +214,7 @@ padding: 0 6px;
 #right_column .prev_next a.prev.disabled, #right_column .prev_next a.prev:hover{ background:url('../img/prev_next_right.png') no-repeat -16px 3px;}
 #right_column .prev_next a.next{ background:url('../img/prev_next_right.png') no-repeat 44px -17px}
 #right_column .prev_next a.next.disabled, #right_column .prev_next a.next:hover{  background:url('../img/prev_next_right.png') no-repeat -16px -17px;}
+#right_column .main_dixit h4 a{font-size: 20px;letter-spacing: -1px;text-decoration: none;color: #FF3399;}
 
 .share{margin:20px 0 4px 0; overflow: hidden;}
 .share a, .vote a{float:left; margin-right:3px;color:#999;

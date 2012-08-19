@@ -31,7 +31,10 @@
             break;
         }
 
-        window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+        var left = (screen.width/2)- 300;
+        var top = (screen.height/2)-300;
+
+        window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600, top='+top+', left='+lef);
     }
 
 
@@ -211,12 +214,12 @@
         var $prev = $column.find('.prev');
         var $next = $column.find('.next');
 
-        $('.write-your-dixit').on('click', function(e) {
+        var $writeLink = $('.write-your-dixit').on('click', function(e) {
             e.preventDefault();
             $next.trigger('click');
         });
 
-        $('.about-the-project').on('click', function(e) {
+        var $aboutLink = $('.about-the-project').on('click', function(e) {
             e.preventDefault();
             $prev.trigger('click');
         });
@@ -229,6 +232,9 @@
                 $next.addClass('disabled');
                 $prev.removeClass('disabled');
             });
+
+            $writeLink.addClass('active');
+            $aboutLink.removeClass('active');
         });
 
         $prev.on('click', function(e) {
@@ -239,6 +245,9 @@
                 $prev.addClass('disabled');
                 $next.removeClass('disabled');
             });
+
+            $aboutLink.addClass('active');
+            $writeLink.removeClass('active');
         });
     }
 
