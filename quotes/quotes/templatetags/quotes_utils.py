@@ -46,6 +46,6 @@ def get_starred(context):
     try:
         UserStar.objects.get(user=context['user'], quote=context['quote'])
     except UserStar.DoesNotExist:
-        return "false"
+        return "not-liked"
     else:
-        return "true"
+        return "liked"

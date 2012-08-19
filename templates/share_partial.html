@@ -9,7 +9,7 @@
 </div>
 
 {% if user.is_authenticated %}
-<div class="vote" data-id="{{ pk }}" data-starred="{% get_starred %}">
+<div class="vote {% get_starred %}" data-id="{{ pk }}">
   <a href="{% url vote %}" title="like">Like</a>
   {% csrf_token %}
 {% else %}
