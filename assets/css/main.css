@@ -213,7 +213,7 @@ padding: 0 6px;
 #right_column .prev_next a.next{ background:url('../img/prev_next_right.png') no-repeat 44px -17px}
 #right_column .prev_next a.next.disabled, #right_column .prev_next a.next:hover{  background:url('../img/prev_next_right.png') no-repeat -16px -17px;}
 
-.share{margin:20px 0; overflow: hidden;}
+.share{margin:20px 0 4px 0; overflow: hidden;}
 .share a, .vote a{float:left; margin-right:3px;color:#999;
     border:1px solid #999; padding:0px 20px 0px 1px; line-height:14px;
     text-decoration:none;font-weight:bold; background:url('../img/share.png') no-repeat right 0px; }
@@ -226,7 +226,7 @@ padding: 0 6px;
 .share li a.share_tw:hover{background:#FE57A1 url('../img/social.png') no-repeat center top;}
 .share li a.share_gp{background:#999 url('../img/social.png') no-repeat right top;}
 .share li a.share_gp:hover{background:#FE57A1 url('../img/social.png') no-repeat right top;}
-.vote a { float: none; background:url('../img/heart_mini.png') no-repeat right 0px;}
+.vote a { float: none; background:url('../img/star_mini.png') no-repeat right 0px;}
 .vote a:hover { color: black; }
 
 #home #login .content > form { display: none; }
