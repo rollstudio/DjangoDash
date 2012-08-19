@@ -237,7 +237,7 @@ padding: 0 6px;
 .vote, .vote-count { display: inline-block; }
 .vote a { float: none; background:url('../img/star_mini.png') no-repeat right 0px;}
 .liked.vote a {background:url('../img/star_mini_voted.png') no-repeat right 0px;}
-.vote a:hover { color: black; }
+.vote a:hover { color: #666; }
 
 #home #login .content > form { display: none; }
 
