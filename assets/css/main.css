@@ -112,7 +112,7 @@ transition: color 0.4s ease-in;}
 
 .dixit_details{color:#666;min-width:216px;}
 .dixit_details p{margin:0;}
-.dixit_details a{ text-decoration: none; color: #666; border: 1px solid #666; font-weight:bold; padding:0 2px; }
+.dixit_details a{ text-decoration: none; color: #666; border: 1px solid #666; font-weight:bold; padding:0 2px;line-height:12px; }
 .dixit_details a:visited { text-decoration: none; color: #999; border: 1px solid #999; font-weight:bold; padding:0 2px; }
 .dixit_details a:hover { color: #00E; }
 .dixit_text{ font-size:22px;margin-bottom:40px;line-height:22px;}
@@ -229,6 +229,7 @@ padding: 0 6px;
 .share li a.share_gp:hover{background:#FE57A1 url('../img/social.png') no-repeat right top;}
 .vote, .vote-count { display: inline-block; }
 .vote a { float: none; background:url('../img/star_mini.png') no-repeat right 0px;}
+.liked.vote a {background:url('../img/star_mini_voted.png') no-repeat right 0px;}
 .vote a:hover { color: black; }
 
 #home #login .content > form { display: none; }
