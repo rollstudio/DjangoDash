@@ -84,6 +84,9 @@
             vote.on('click', 'a.login.disabled', function(e) {
                 e.preventDefault();
                 $('.write-your-dixit').trigger('click');
+                $('#right_column').addClass('mini').on('mouseout', function() {
+                    $(this).removeClass('mini');
+                });
             });
         }
     }
