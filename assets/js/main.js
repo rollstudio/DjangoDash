@@ -19,7 +19,39 @@
         });
     }
 
+    function setMiddleColumn() {
+        var $column = $('#middle_column');
+        var $prev = $column.find('.prev');
+        var $next = $column.find('.next');
+
+        $('#write-your-dixit').on('click', function(e) {
+            e.preventDefault();
+            $next.trigger('click');
+        });
+
+        $next.on('click', function(e) {
+            e.preventDefault();
+            $column.animate({
+                scrollLeft: $column.width()
+            }, 500, function() {
+                $next.addClass('disabled');
+                $prev.removeClass('disabled');
+            });
+        });
+
+        $prev.on('click', function(e) {
+            e.preventDefault();
+            $column.animate({
+                scrollLeft: 0
+            }, 500, function() {
+                $prev.addClass('disabled');
+                $next.removeClass('disabled');
+            });
+        });
+    }
+
     $(function() {
         setLogin();
+        setMiddleColumn();
     });
 })(jQuery, window, document);
