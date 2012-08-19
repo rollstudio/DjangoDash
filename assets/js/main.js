@@ -133,6 +133,11 @@
             $next.trigger('click');
         });
 
+        $('.about-the-project').on('click', function(e) {
+            e.preventDefault();
+            $prev.trigger('click');
+        });
+
         $next.on('click', function(e) {
             e.preventDefault();
             $column.animate({
