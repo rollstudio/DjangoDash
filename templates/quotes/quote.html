@@ -18,7 +18,7 @@
       <p><strong>SOURCE:</strong> <a href="{{ quote.source }}">{{ quote.source|truncatechars:40 }}</a></p>
       {% endif %}
       <p><strong>TAG:</strong> {{ quote.tags.all|join:', ' }}</p>
-      {% with url=quote.get_full_url description=quote.body pk=quote.pk %}
+      {% with url=quote.get_full_url description=quote.body pk=quote.pk title=quote.title %}
         {% include "share_partial.html" %}
       {% endwith %}
 
