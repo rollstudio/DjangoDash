@@ -119,6 +119,7 @@ transition: color 0.4s ease-in;}
 .dixit_text{ font-size:22px;margin-bottom:40px;line-height:22px;}
 
 #middle_column .container, #right_column .quote{padding:20px;}
+#right_column .quote{height:100%;}
 #middle_column{width:30%; background:/*#FBFBFB*/ rgba(251,251,251,0.8);overflow:hidden;}
 #middle_column ul#wrapper{list-style-type:none; width:400%;height:100%; }
 #middle_column ul#wrapper li{width:25%;height:100%; float:left;}
@@ -152,7 +153,7 @@ transition: 0.5s linear all; }
 #right_column h3{font-size: 40px;margin-top: 12px;line-height: 40px;margin-bottom: 20px;}
 #right_column h3 a{color: black; text-decoration: none;}
 #right_column h3 a:visited{color: black; }
-.dixit_text.nano { width: 80%; height: 200px; padding-right: 20%;  }
+.dixit_text.nano { width: 80%; height: 50%; padding-right: 20%;  }
 /*.dixit_text.nano .content { padding: 0 20% 0 0; }*/
 
 .prev_next{position:fixed; bottom:40px; margin-left:20px;font-size:14px; font-weight:bold;}
