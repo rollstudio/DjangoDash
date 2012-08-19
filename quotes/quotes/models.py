@@ -90,13 +90,13 @@ def quote_post_save(sender, instance, created, *args, **kwargs):
 
 #post_save.connect(quote_post_save, sender=Quote)
 
-def quote_pre_save(sender, instance, raw, using, **kwargs):
+def quote_set_excerpt(sender, instance, raw, using, **kwargs):
     chunks = instance.body.split('---', 1)
     if len(chunks) > 1:
         instance.excerpt = chunks[0][:255]
         instance.body = ''.join(chunks)
 
-pre_save.connect(quote_pre_save, sender=Quote)
+pre_save.connect(quote_set_excerpt, sender=Quote)
 
 
 def star_post_save(sender, instance, created, *args, **kwargs):
