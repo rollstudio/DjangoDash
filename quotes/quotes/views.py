@@ -21,7 +21,10 @@ class QuoteCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        form.instance.author = Author.objects.get_or_create(name=form.instance.author)
+        author = form.cleaned_data['author_field'].strip()
+
+        if author:
+            form.instance.author, created = Author.objects.get_or_create(name=author)
 
         return super(QuoteCreate, self).form_valid(form)
 

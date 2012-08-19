@@ -4,7 +4,7 @@ from .models import Quote
 
 
 class QuoteForm(forms.ModelForm):
-    author = forms.CharField()
+    author_field = forms.CharField(label='Author', required=False)
 
     class Meta:
         model = Quote
