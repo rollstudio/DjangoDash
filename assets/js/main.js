@@ -13,10 +13,14 @@
         FB.ui(data);
     }
 
-    function share(type, url, description) {
+    function share(type, url, title, description) {
+        if ($.trim(title) === '') {
+            title = 'Check this quote!';
+        }
+
         var data = {
             url: url,
-            text: 'Check this quote!'
+            text: title
         };
 
         switch (type) {
@@ -34,7 +38,7 @@
         var left = (screen.width/2)- 300;
         var top = (screen.height/2)-300;
 
-        window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600, top='+top+', left='+lef);
+        window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600, top='+top+', left='+left);
     }
 
 
@@ -42,11 +46,12 @@
         $('.share').each(function() {
             var $$ = $(this);
             var url = $$.data('url');
+            var title = $$.data('title');
             var description = $$.data('description');
 
             $$.on('click', '.share_buttons a', function(e) {
                 e.preventDefault();
-                share($(this).attr('class'), url, description);
+                share($(this).attr('class'), url, title, description);
             });
         });
 
