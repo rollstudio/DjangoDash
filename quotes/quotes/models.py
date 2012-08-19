@@ -93,7 +93,8 @@ def star_post_save(sender, instance, created, *args, **kwargs):
 post_save.connect(star_post_save, sender=UserStar)
 
 def star_post_delete(sender, instance, using, **kwargs):
-    instance.quote.star_count -= 1
+    if instance.quote.star_count > 0:
+        instance.quote.star_count -= 1
     instance.quote.save()
 
 post_delete.connect(star_post_delete, sender=UserStar)
