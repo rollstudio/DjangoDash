@@ -297,6 +297,6 @@
         setKeyboardNavigation();
 
         $('select').customSelect();
-        $(".dixit_text").nanoScroller();
+        $("#right_column .dixit_text").nanoScroller();
     });
 })(jQuery, window, document);
