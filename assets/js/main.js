@@ -1,31 +1,32 @@
 (function($, window, document) {
     var $body;
 
-    function shareOnFacebook(url, title, text, image) {
+    function shareOnFacebook(url, title, text) {
         var data = {
             app_id: window.appId,
             link: url,
             name: title,
-            description: text
+            description: text,
+            method: 'feed'
         };
 
-        FB.ui('feed', data);
+        FB.ui(data);
     }
 
-    function share(type, url) {
+    function share(type, url, description) {
         var data = {
             url: url,
             text: 'Check this quote!'
         };
 
         switch (type) {
-            case 'facebook':
-                shareOnFacebook(url, title, text);
+            case 'share_fb':
+                shareOnFacebook(url, data.text, description);
                 return;
-            case 'twitter':
+            case 'share_tw':
                 url = 'https://twitter.com/intent/tweet?' + $.param(data);
             break;
-            case 'google':
+            case 'share_gp':
                 url = 'https://plus.google.com/share?' + $.param(data);
             break;
         }
@@ -33,6 +34,19 @@
         window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
     }
 
+
+    function setSharing() {
+        $('.share').each(function() {
+            var $$ = $(this);
+            var url = $$.data('url');
+            var description = $$.data('description');
+
+            $$.on('click', '.share_buttons a', function(e) {
+                e.preventDefault();
+                share($(this).attr('class'), url, description);
+            });
+        });
+    }
 
     function setLogin() {
         var $form_signin = $('#form_signin');
@@ -164,6 +178,7 @@
         setLogin();
         setMiddleColumn();
         setNextPrev();
+        setSharing();
 
         $('select').customSelect();
     });
