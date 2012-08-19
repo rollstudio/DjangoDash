@@ -229,6 +229,7 @@ padding: 0 6px;
 .share li a.share_gp:hover{background:#FE57A1 url('../img/social.png') no-repeat right top;}
 .vote, .vote-count { display: inline-block; }
 .vote a { float: none; background:url('../img/star_mini.png') no-repeat right 0px;}
+.liked.vote a {background:url('../img/star_mini_voted.png') no-repeat right 0px;}
 .vote a:hover { color: black; }
 
 #home #login .content > form { display: none; }
