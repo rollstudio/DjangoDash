@@ -1,5 +1,5 @@
 <div class="quote" data-id="{{ quote.id }}">
-  <h3><a href="{{ quote.get_absolute_url }}" title="{{quote.title}}">ID {{ quote.ok }}</a></h3>
+  <h3><a href="{{ quote.get_absolute_url }}" title="{{quote.title}}">ID {{ quote.pk }}</a></h3>
   {% if quote.title %}
   <h4><a href="{{ quote.get_absolute_url }}" title="{{quote.title}}">{{ quote.title }}</a></h3>
   {% endif %}
