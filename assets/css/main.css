@@ -113,6 +113,8 @@ transition: color 0.4s ease-in;}
 
 .dixit_details{color:#666;min-width:216px;}
 .dixit_details p{margin:0;}
+.dixit_details a, .dixit_details a:visited { text-decoration: none; color: #666; border-bottom: 1px solid #666; }
+.dixit_details a:hover { color: #00E; }
 .dixit_text{ font-size:22px;margin-bottom:40px;line-height:22px;}
 
 #middle_column .container, #right_column .quote{padding:20px;}
