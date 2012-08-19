@@ -2,8 +2,6 @@ from django.contrib import admin
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
-from braces.views import LoginRequiredMixin
-
 from allauth.account.forms import LoginForm, SignupForm
 from quotes.views import GetQuote
 
@@ -12,7 +10,7 @@ from .quotes.forms import QuoteForm
 admin.autodiscover()
 
 
-class HomeView(LoginRequiredMixin, TemplateView):
+class HomeView(TemplateView):
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):

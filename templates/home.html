@@ -1,6 +1,20 @@
 {% extends "base.html" %}
+{% load chunks %}
+{% load quotes_utils %}
 {% block content_middle %}
 <ul id="wrapper">
+  <li id="about">
+    <div class="container">
+      <h3>About <br>the project</h3>
+      <div class="content">
+        {% chunk "about" %}
+      </div>
+    </div>
+    <div class="view">
+      <a id="write-your-dixit" href="#" title="Write your Dixit">Write your Dixit</a>
+    </div>
+  </li>
+
   {% if not user.is_authenticated %}
   <li id="login">
     <div class="container">
@@ -36,9 +50,42 @@
     {% endwith %}
   </li>
   {% endif %}
-
-  <li id="about">
-  </li>
 </ul>
 
+<div class="prev_next">
+  <a href="#" title="prev" class="prev disabled">prev</a>
+  <a href="#" title="next" class="next">next</a>
+</div>
+
 {% endblock content_middle %}
+
+{% block right-column %}
+  <ul class="wrapper" style="height:100%">
+    <li>
+      <div class="container">
+          {% get_last_quote_by_index 1 as quote %}
+          {% include "quotes/quote.html" %}
+      </div>
+    </li>
+    {% get_last_quote_by_index 2 as quote %}
+
+    {% if quote %}
+    <li>
+      <div class="container">
+        {% include "quotes/quote.html" %}
+      </div>
+    </li>
+    {% endif %}
+ </ul>
+  <div class="prev_next">
+    <a href="#" title="prev" class="prev disabled">prev</a>
+    <a href="#" title="next" class="next">next</a>
+  </div>
+</div>
+
+<script>
+  window.lastQuoteId = {{ quote.pk }};
+  window.nextQuoteUrl = '{% url get-next-quote %}';
+</script>
+
+{% endblock right-column %}

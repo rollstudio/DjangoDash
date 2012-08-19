@@ -22,13 +22,10 @@ class QuoteCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         form.instance.author = Author.objects.get_or_create(name=form.instance.author)
 
-        print 'lol'
-
         return super(QuoteCreate, self).form_valid(form)
 
 
 class GetQuotes(BaseListView):
-
     limit = 5
     order = None
     query = None
